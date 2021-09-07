@@ -1,7 +1,7 @@
-package com.example.sistemaControle.form;
+package com.example.E_Commerce.form;
 
-import com.example.sistemaControle.model.Venda;
-import com.example.sistemaControle.repository.VendaRepository;
+import com.example.E_Commerce.model.Venda;
+import com.example.E_Commerce.repository.VendaRepository;
 
 public class AtualizacaoStatusForm {
 

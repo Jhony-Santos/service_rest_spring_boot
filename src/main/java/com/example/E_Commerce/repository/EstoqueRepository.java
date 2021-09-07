@@ -1,7 +1,7 @@
-package com.example.sistemaControle.repository;
+package com.example.E_Commerce.repository;
 
-import com.example.sistemaControle.model.Estoque;
-import com.example.sistemaControle.model.Produto;
+import com.example.E_Commerce.model.Estoque;
+import com.example.E_Commerce.model.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,9 +1,9 @@
 /*package com.example.sistemaControle.service;
 
 
-import com.example.sistemaControle.model.Cliente;
-import com.example.sistemaControle.model.Compra;
-import com.example.sistemaControle.repository.CompraRepository;
+import com.example.E_Commerce.model.Cliente;
+import com.example.E_Commerce.model.Compra;
+import com.example.E_Commerce.repository.CompraRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -38,10 +38,6 @@ public class CompraService {
         return compra.isPresent() ? ResponseEntity.ok(compra.get()): ResponseEntity.notFound().build();
 
     }
-
-
-
-
 
 }
 */

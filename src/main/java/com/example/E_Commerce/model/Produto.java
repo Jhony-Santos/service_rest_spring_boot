@@ -1,4 +1,4 @@
-package com.example.sistemaControle.model;
+package com.example.E_Commerce.model;
 
 
 import javax.persistence.*;

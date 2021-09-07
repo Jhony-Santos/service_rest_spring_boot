@@ -1,10 +1,10 @@
-package com.example.sistemaControle.resource;
+package com.example.E_Commerce.resource;
 
 
-import com.example.sistemaControle.EventoGenerico;
-import com.example.sistemaControle.model.Fornecedor;
-import com.example.sistemaControle.repository.FornecedorRepository;
-import com.example.sistemaControle.service.FornecedorService;
+import com.example.E_Commerce.EventoGenerico;
+import com.example.E_Commerce.model.Fornecedor;
+import com.example.E_Commerce.repository.FornecedorRepository;
+import com.example.E_Commerce.service.FornecedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@PreAuthorize("hasRole('ROLE_LOJA')")
+//@PreAuthorize("hasRole('ROLE_LOJA')")
 @RequestMapping("/fornecedores")
 public class FornecedorResource {
 

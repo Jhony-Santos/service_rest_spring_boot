@@ -1,5 +1,5 @@
 
-package com.example.sistemaControle;
+package com.example.E_Commerce;
 
 import java.util.ArrayList;
 import java.util.Arrays;

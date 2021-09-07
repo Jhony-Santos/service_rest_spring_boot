@@ -1,4 +1,4 @@
-package com.example.sistemaControle;
+package com.example.E_Commerce;
 
 import org.springframework.context.ApplicationEvent;
 

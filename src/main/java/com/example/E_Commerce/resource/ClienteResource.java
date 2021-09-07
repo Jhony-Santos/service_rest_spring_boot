@@ -1,10 +1,10 @@
-package com.example.sistemaControle.resource;
+package com.example.E_Commerce.resource;
 
 
-import com.example.sistemaControle.EventoCliente;
-import com.example.sistemaControle.model.Cliente;
-import com.example.sistemaControle.repository.ClienteRepository;
-import com.example.sistemaControle.service.ClienteService;
+import com.example.E_Commerce.EventoCliente;
+import com.example.E_Commerce.model.Cliente;
+import com.example.E_Commerce.repository.ClienteRepository;
+import com.example.E_Commerce.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@PreAuthorize("hasRole('ROLE_LOJA')")
+//@PreAuthorize("hasRole('ROLE_LOJA')")
 @RequestMapping("/cliente")
 public class ClienteResource {
 

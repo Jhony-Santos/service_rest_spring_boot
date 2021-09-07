@@ -1,6 +1,6 @@
-package com.example.sistemaControle.model;
+package com.example.E_Commerce.model;
 
-import com.example.sistemaControle.dto.CompraDTO;
+import com.example.E_Commerce.dto.CompraDTO;
 
 import javax.persistence.*;
 import java.util.ArrayList;

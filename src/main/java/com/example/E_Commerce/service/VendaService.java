@@ -1,7 +1,7 @@
-package com.example.sistemaControle.service;
+package com.example.E_Commerce.service;
 
-import com.example.sistemaControle.model.Venda;
-import com.example.sistemaControle.repository.VendaRepository;
+import com.example.E_Commerce.model.Venda;
+import com.example.E_Commerce.repository.VendaRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;

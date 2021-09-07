@@ -1,11 +1,11 @@
-package com.example.sistemaControle.resource;
+package com.example.E_Commerce.resource;
 
 
-import com.example.sistemaControle.EventoGenerico;
-import com.example.sistemaControle.dto.CompraDTO;
-import com.example.sistemaControle.dto.ItemCompraDTO;
-import com.example.sistemaControle.model.*;
-import com.example.sistemaControle.repository.*;
+import com.example.E_Commerce.EventoGenerico;
+import com.example.E_Commerce.dto.CompraDTO;
+import com.example.E_Commerce.dto.ItemCompraDTO;
+import com.example.E_Commerce.model.*;
+import com.example.E_Commerce.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
-@PreAuthorize("hasRole('ROLE_LOJA')")
+//@PreAuthorize("hasRole('ROLE_LOJA')")
 @RequestMapping("/compra")
 public class CompraResource {
 

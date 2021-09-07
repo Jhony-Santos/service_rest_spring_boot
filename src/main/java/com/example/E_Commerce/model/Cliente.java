@@ -1,5 +1,6 @@
-package com.example.sistemaControle.model;
+package com.example.E_Commerce.model;
 
+import com.example.E_Commerce.model.Endereco;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

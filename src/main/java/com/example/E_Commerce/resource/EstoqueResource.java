@@ -1,8 +1,8 @@
-package com.example.sistemaControle.resource;
+package com.example.E_Commerce.resource;
 
-import com.example.sistemaControle.model.Estoque;
-import com.example.sistemaControle.repository.EstoqueRepository;
-import com.example.sistemaControle.service.EstoqueService;
+import com.example.E_Commerce.model.Estoque;
+import com.example.E_Commerce.repository.EstoqueRepository;
+import com.example.E_Commerce.service.EstoqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@PreAuthorize("hasRole('ROLE_LOJA')")
+//@PreAuthorize("hasRole('ROLE_LOJA')")
 @RequestMapping("/estoque")
 public class EstoqueResource {
 

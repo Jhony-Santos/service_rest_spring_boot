@@ -1,6 +1,6 @@
-package com.example.sistemaControle.repository;
+package com.example.E_Commerce.repository;
 
-import com.example.sistemaControle.model.Cliente;
+import com.example.E_Commerce.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClienteRepository extends JpaRepository<Cliente,String> {

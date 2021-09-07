@@ -1,8 +1,8 @@
-package com.example.sistemaControle;
+package com.example.E_Commerce;
 
-import com.example.sistemaControle.resource.CompraResource;
-import com.example.sistemaControle.resource.FornecedorResource;
-import com.example.sistemaControle.resource.VendaResource;
+import com.example.E_Commerce.resource.CompraResource;
+import com.example.E_Commerce.resource.FornecedorResource;
+import com.example.E_Commerce.resource.VendaResource;
 import org.springframework.context.ApplicationEvent;
 
 import javax.servlet.http.HttpServletResponse;

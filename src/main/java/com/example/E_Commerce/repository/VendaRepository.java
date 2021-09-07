@@ -1,6 +1,6 @@
-package com.example.sistemaControle.repository;
+package com.example.E_Commerce.repository;
 
-import com.example.sistemaControle.model.Venda;
+import com.example.E_Commerce.model.Venda;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VendaRepository extends JpaRepository<Venda, Long> {

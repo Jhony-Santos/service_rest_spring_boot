@@ -1,4 +1,6 @@
-package com.example.sistemaControle.model;
+package com.example.E_Commerce.model;
+
+import com.example.E_Commerce.dto.VendaDTO;
 
 
 import javax.persistence.*;

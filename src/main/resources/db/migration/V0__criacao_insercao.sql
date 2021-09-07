@@ -18,10 +18,16 @@ INSERT INTO cliente(cpf,nome, telefone,email,logradouro,numero,complemento,bairr
 ('1234','Jhonatan','999999999','jntd@gft.com','Rua Javazão','1990','sem complemento','Santa Felicidade','787878','Curitiba','Paraná');
 
 INSERT INTO cliente (cpf, nome, telefone, email, logradouro,numero,complemento,bairro,cep,cidade,estado) values
-('12345','David','888888888','david@gft.com','Rua Instrutor','2021','ao lado da Fármacia','Mossunguê','343434','Curitiba','Paraná');
+('12345','Vinicius','888888888','david@gft.com','Rua Instrutor','2021','ao lado da Fármacia','Mossunguê','343434','Curitiba','Paraná');
 
 INSERT INTO cliente (cpf, nome, telefone, email, logradouro,numero,complemento,bairro,cep,cidade,estado) values
-('123456','Eintein','77777777','einstein@gft.com','Rua Gênio','195','ao lado da Museu nacional','Batel','356732','Curitiba','Paraná');
+('123456','Matheus','77777777','einstein@gft.com','Rua Gênio','195','ao lado da Museu nacional','Batel','356732','Curitiba','Paraná');
+
+INSERT INTO cliente (cpf, nome, telefone, email, logradouro,numero,complemento,bairro,cep,cidade,estado) values
+('1234567','David','77777777','einstein@gft.com','Rua Gênio','195','ao lado da Museu nacional','Batel','356732','Curitiba','Paraná');
+
+INSERT INTO cliente (cpf, nome, telefone, email, logradouro,numero,complemento,bairro,cep,cidade,estado) values
+('12345678','Joaquina','77777777','einstein@gft.com','Rua Gênio','195','ao lado da Museu nacional','Batel','356732','Curitiba','Paraná');
 
 
 

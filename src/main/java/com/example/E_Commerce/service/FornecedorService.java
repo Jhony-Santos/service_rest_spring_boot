@@ -1,9 +1,9 @@
-package com.example.sistemaControle.service;
+package com.example.E_Commerce.service;
 
 
-import com.example.sistemaControle.model.Cliente;
-import com.example.sistemaControle.model.Fornecedor;
-import com.example.sistemaControle.repository.FornecedorRepository;
+import com.example.E_Commerce.model.Cliente;
+import com.example.E_Commerce.model.Fornecedor;
+import com.example.E_Commerce.repository.FornecedorRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -28,13 +28,11 @@ public class FornecedorService {
             throw new EmptyResultDataAccessException(1);
         }
 
-
         Fornecedor fornecedorSalvo=verificarFornecedor.get();
         BeanUtils.copyProperties(fornecedor, fornecedorSalvo, "cpf");
 
         return fornecedorRepository.save(fornecedorSalvo);
     }
-
 
     public ResponseEntity<Fornecedor> findFornecedorById(@PathVariable String cnpj){
         Optional<Fornecedor> fornecedor = fornecedorRepository.findById(cnpj);
@@ -42,12 +40,5 @@ public class FornecedorService {
         return fornecedor.isPresent() ? ResponseEntity.ok(fornecedor.get()): ResponseEntity.notFound().build();
 
     }
-
-
-
-
-
-
-
 
 }

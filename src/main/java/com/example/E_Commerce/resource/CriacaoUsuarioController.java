@@ -1,6 +1,6 @@
 /*
 
-package com.example.sistemaControle.resource;
+package com.example.E_Commerce.resource;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.sistemaControle.model.Perfis;
-import com.example.sistemaControle.model.Usuarios;
-import com.example.sistemaControle.repository.CriacaoUsuarioRepository;
+import com.example.E_Commerce.model.Perfis;
+import com.example.E_Commerce.model.Usuarios;
+import com.example.E_Commerce.repository.CriacaoUsuarioRepository;
 
 @RestController
 @RequestMapping("/criausuario")

@@ -1,4 +1,4 @@
-/*package com.example.sistemaControle.config.security;
+/*package com.example.E_Commerce.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.example.sistemaControle.repository.UsuariosRepository;
+import com.example.E_Commerce.repository.UsuariosRepository;
 
 @EnableWebSecurity
 @Configuration

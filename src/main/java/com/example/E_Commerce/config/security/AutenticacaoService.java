@@ -1,5 +1,5 @@
 /*
-package com.example.sistemaControle.config.security;
+package com.example.E_Commerce.config.security;
 
 
 import java.util.Optional;
@@ -10,9 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
-import com.example.sistemaControle.model.Usuarios;
-import com.example.sistemaControle.repository.UsuariosRepository;
+import com.example.E_Commerce.model.Usuarios;
+import com.example.E_Commerce.repository.UsuariosRepository;
 
 @Service
 public class AutenticacaoService implements UserDetailsService {

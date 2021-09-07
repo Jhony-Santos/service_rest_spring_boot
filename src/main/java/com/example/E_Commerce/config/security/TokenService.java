@@ -1,6 +1,6 @@
 /*
 
-package com.example.sistemaControle.config.security;
+package com.example.E_Commerce.config.security;
 
 
 import java.util.Date;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import com.example.sistemaControle.model.Usuarios;
+import com.example.E_Commerce.model.Usuarios;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

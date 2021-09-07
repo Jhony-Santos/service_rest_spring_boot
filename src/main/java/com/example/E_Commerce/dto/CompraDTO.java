@@ -1,4 +1,4 @@
-package com.example.sistemaControle.dto;
+package com.example.E_Commerce.dto;
 
 import java.util.List;
 

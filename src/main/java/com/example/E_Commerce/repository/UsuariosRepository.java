@@ -1,11 +1,11 @@
 /*
-package com.example.sistemaControle.repository;
+package com.example.E_Commerce.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.sistemaControle.model.Usuarios;
+import com.example.E_Commerce.model.Usuarios;
 
 public interface UsuariosRepository extends JpaRepository<Usuarios, Long> {
 

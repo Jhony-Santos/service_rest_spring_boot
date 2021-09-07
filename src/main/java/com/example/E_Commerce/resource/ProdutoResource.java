@@ -1,14 +1,14 @@
-package com.example.sistemaControle.resource;
+package com.example.E_Commerce.resource;
 
-import com.example.sistemaControle.EventoCliente;
-import com.example.sistemaControle.EventoGenerico;
-import com.example.sistemaControle.dto.CompraDTO;
-import com.example.sistemaControle.model.Cliente;
-import com.example.sistemaControle.model.Estoque;
-import com.example.sistemaControle.model.Produto;
-import com.example.sistemaControle.repository.EstoqueRepository;
-import com.example.sistemaControle.repository.ProdutoRepository;
-import com.example.sistemaControle.service.ProdutoService;
+import com.example.E_Commerce.EventoCliente;
+import com.example.E_Commerce.EventoGenerico;
+import com.example.E_Commerce.dto.CompraDTO;
+import com.example.E_Commerce.model.Cliente;
+import com.example.E_Commerce.model.Estoque;
+import com.example.E_Commerce.model.Produto;
+import com.example.E_Commerce.repository.EstoqueRepository;
+import com.example.E_Commerce.repository.ProdutoRepository;
+import com.example.E_Commerce.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@PreAuthorize("hasRole('ROLE_LOJA')")
+//@PreAuthorize("hasRole('ROLE_LOJA')")
 @RequestMapping("/produto")
 public class ProdutoResource {
 

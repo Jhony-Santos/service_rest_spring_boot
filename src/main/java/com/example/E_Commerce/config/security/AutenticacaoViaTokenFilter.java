@@ -1,5 +1,5 @@
 /*
-package com.example.sistemaControle.config.security;
+package com.example.E_Commerce.config.security;
 
 
 import java.io.IOException;
@@ -13,8 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.example.sistemaControle.model.Usuarios;
-import com.example.sistemaControle.repository.UsuariosRepository;
+import com.example.E_Commerce.model.Usuarios;
+import com.example.E_Commerce.repository.UsuariosRepository;
 
 public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
 

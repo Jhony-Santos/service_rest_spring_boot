@@ -1,11 +1,11 @@
 /*
 
 
-package com.example.sistemaControle.resource;
+package com.example.E_Commerce.resource;
 
 import javax.validation.Valid;
 
-import com.example.sistemaControle.config.security.TokenService;
+import com.example.E_Commerce.config.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.sistemaControle.dto.TokenDto;
-import com.example.sistemaControle.form.LoginForm;
-import com.example.sistemaControle.config.security.TokenService;
+import com.example.E_Commerce.dto.TokenDto;
+import com.example.E_Commerce.form.LoginForm;
+import com.example.E_Commerce.config.security.TokenService;
 
 @RestController
 @RequestMapping("/auth")

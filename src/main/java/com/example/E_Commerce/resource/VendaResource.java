@@ -1,17 +1,17 @@
-package com.example.sistemaControle.resource;
+package com.example.E_Commerce.resource;
 
 
-import com.example.sistemaControle.EventoGenerico;
+import com.example.E_Commerce.EventoGenerico;
 
-import com.example.sistemaControle.dto.ItemVendaDTO;
-import com.example.sistemaControle.dto.VendaDTO;
-import com.example.sistemaControle.form.AtualizacaoStatusForm;
-import com.example.sistemaControle.model.*;
-import com.example.sistemaControle.repository.ClienteRepository;
-import com.example.sistemaControle.repository.EstoqueRepository;
-import com.example.sistemaControle.repository.ProdutoRepository;
-import com.example.sistemaControle.repository.VendaRepository;
-import com.example.sistemaControle.service.VendaService;
+import com.example.E_Commerce.dto.ItemVendaDTO;
+import com.example.E_Commerce.dto.VendaDTO;
+import com.example.E_Commerce.form.AtualizacaoStatusForm;
+import com.example.E_Commerce.model.*;
+import com.example.E_Commerce.repository.ClienteRepository;
+import com.example.E_Commerce.repository.EstoqueRepository;
+import com.example.E_Commerce.repository.ProdutoRepository;
+import com.example.E_Commerce.repository.VendaRepository;
+import com.example.E_Commerce.service.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@PreAuthorize("hasRole('ROLE_CLIENTE')")
+//@PreAuthorize("hasRole('ROLE_CLIENTE')")
 @RequestMapping("/venda")
 public class VendaResource {
 
@@ -137,10 +137,6 @@ public class VendaResource {
 
 
 }
-
-
-
-
 
 
 
