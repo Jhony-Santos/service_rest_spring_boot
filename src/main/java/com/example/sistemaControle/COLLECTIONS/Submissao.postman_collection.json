@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "14fc6ae8-d8d3-4f81-9769-45fc6379a26d",
+		"name": "Submissao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "listagem de  submissões (read)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/submissao",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"submissao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criar submissao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n        \r\n        \"starter\": {\r\n            \"id\": 1,\r\n            \"nome\": \"jhonatan\",\r\n            \"letras\": \"jntd\",\r\n            \"email\": \"jhony.jpn@gmail.com\",\r\n            \"telefone\": \"999999999\",\r\n            \"endereco\": \"rua dos cabrais, 120\",\r\n            \"linguagem\": \"Java\"\r\n        },\r\n        \"desafio\": {\r\n            \"id\": 2,\r\n            \"nome\": \"API EM C#\"\r\n        },\r\n        \"enderecoRepositorio\": \"@GFT.GIT\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/submissao/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"submissao",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletar submissao pelo id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/submissao/delete/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"submissao",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualizar submissao pelo id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 1,\r\n        \"starter\": {\r\n            \"id\": 1,\r\n            \"nome\": \"jhonatan\",\r\n            \"letras\": \"jntd\",\r\n            \"email\": \"jhony.jpn@gmail.com\",\r\n            \"telefone\": \"999999999\",\r\n            \"endereco\": \"rua dos cabrais, 120\",\r\n            \"linguagem\": \"Java\"\r\n        },\r\n        \"desafio\": {\r\n            \"id\": 2,\r\n            \"nome\": \"API EM C#\"\r\n        },\r\n        \"enderecoRepositorio\": \"@GITLAB atualizado\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/submissao/update/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"submissao",
+						"update",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

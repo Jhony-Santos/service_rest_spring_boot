@@ -1,6 +1,8 @@
-package com.vendas.vendas_hardware.model;
+package com.example.sistemaControle.model;
+
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Entity
@@ -10,9 +12,13 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
+
     private String nome;
+
     private String descricao;
+
     private String unidade;
+
 
     public Long getCodigo() {
         return codigo;
@@ -58,6 +64,8 @@ public class Produto {
     public int hashCode() {
         return Objects.hash(codigo);
     }
-
-    
 }
+
+
+
+

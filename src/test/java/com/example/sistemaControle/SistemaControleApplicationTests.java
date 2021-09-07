@@ -1,10 +1,10 @@
-package com.vendas.vendas_hardware;
+package com.example.sistemaControle;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class VendasHardwareApplicationTests {
+class SistemaControleApplicationTests {
 
 	@Test
 	void contextLoads() {

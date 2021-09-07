@@ -1,14 +1,19 @@
-package com.vendas.vendas_hardware;
+package com.example.sistemaControle;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Scanner;
+
 @SpringBootApplication
-public class VendasHardwareApplication {
+public class SistemaControleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VendasHardwareApplication.class, args);
-		System.out.println("Projeto iniciado");
+
+			SpringApplication.run(SistemaControleApplication.class, args);
+
+
+
 	}
 
 }
