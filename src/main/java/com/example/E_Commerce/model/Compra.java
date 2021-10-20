@@ -11,8 +11,6 @@ import java.util.Objects;
 @Table(name="compra")
 public class Compra {
 
-
-
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;

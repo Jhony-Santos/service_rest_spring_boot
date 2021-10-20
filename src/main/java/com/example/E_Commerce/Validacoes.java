@@ -1,4 +1,4 @@
-
+/*
 package com.example.E_Commerce;
 
 import java.util.ArrayList;
@@ -110,8 +110,7 @@ public class Validacoes extends ResponseEntityExceptionHandler {
             return mensagemUsuario;
         }
 
-        
-
     }
 
 }
+*/
