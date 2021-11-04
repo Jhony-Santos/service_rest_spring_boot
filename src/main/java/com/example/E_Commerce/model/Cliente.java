@@ -12,16 +12,12 @@ import java.util.Objects;
 public class Cliente {
 
     @Id
+    @GeneratedValue
+    private Long id;
     @Column(unique = true)
     private String cpf;
-
-
     private String nome;
-
-
     private String telefone;
-
-
     private String email;
 
     @Embedded
@@ -77,6 +73,13 @@ public class Cliente {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+    public void setId(){
+        this.id=id;
+    }
+    public Long getId(){
+        return id;
+    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -30,13 +30,10 @@ public class FornecedorResource {
     @Autowired
     private ApplicationEventPublisher publisher;
 
-
-
     @GetMapping
     public List<Fornecedor> list(){
         return fornecedorRepository.findAll();
     }
-
 
     @PostMapping("/create")
     public ResponseEntity create(@RequestBody Fornecedor fornecedor, HttpServletResponse response) {
@@ -59,7 +56,6 @@ public class FornecedorResource {
         Fornecedor fornecedorSave=fornecedorService.update(cnpj,fornecedor);
         return ResponseEntity.ok(fornecedorSave);
     }
-
 
     @DeleteMapping("/{cnpj}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -17,7 +17,7 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente update( String cpf,Cliente cliente){
+    public Cliente update(Long cpf, Cliente cliente){
         Optional<Cliente> verificarCliente=clienteRepository.findById(cpf);
 
         if(verificarCliente.isEmpty()){

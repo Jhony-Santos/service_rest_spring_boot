@@ -9,7 +9,6 @@ public class Fornecedor {
 
     @Id
     private String cnpj;
-
     private String nome;
     private String telefone;
     private String email;
@@ -17,11 +16,9 @@ public class Fornecedor {
     @Embedded
     private Endereco endereco;
 
-
     public Fornecedor() {
 
     }
-
 
     public Fornecedor(String cnpj, String nome, String telefone, String email, Endereco endereco) {
         this.cnpj = cnpj;
@@ -30,7 +27,6 @@ public class Fornecedor {
         this.email = email;
         this.endereco=endereco;
     }
-
 
     public String getCnpj() {
         return cnpj;

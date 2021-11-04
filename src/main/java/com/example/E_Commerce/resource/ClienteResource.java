@@ -31,36 +31,36 @@ public class ClienteResource {
     private ClienteService clienteService;
 
     @GetMapping
-    public List<Cliente> list(){
+    public List<Cliente> list() {
         return clienteRepository.findAll();
     }
 
     @PostMapping("/create") // CREATE
     public ResponseEntity create(@RequestBody Cliente cliente, HttpServletResponse response) {
 
-        Cliente clienteSalvo=clienteRepository.save(cliente);
-        publisher.publishEvent(new EventoCliente(this,response, clienteSalvo.getCpf()));
+        Cliente clienteSalvo = clienteRepository.save(cliente);
+        publisher.publishEvent(new EventoCliente(this, response, clienteSalvo.getId()));
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
     }
 
-    @GetMapping("/{cpf}") // READ
-    public ResponseEntity<Cliente> findClienteById(@PathVariable String cpf){
-        Optional<Cliente> cliente=clienteRepository.findById(cpf);
-        return cliente.isPresent() ? ResponseEntity.ok(cliente.get()): ResponseEntity.notFound().build();
+    @GetMapping("/{id}") // READ
+    public ResponseEntity<Cliente> findClienteById(@PathVariable Long id) {
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+        return cliente.isPresent() ? ResponseEntity.ok(cliente.get()) : ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/update/{cpf}")    // UPDATE
-    public ResponseEntity<Cliente> update(@PathVariable String cpf, @RequestBody Cliente cliente){
-        Cliente clienteSave=clienteService.update(cpf,cliente);
+    @PutMapping("/update/{id}")    // UPDATE
+    public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody Cliente cliente) {
+        Cliente clienteSave = clienteService.update(id, cliente);
         return ResponseEntity.ok(clienteSave);
     }
 
     @DeleteMapping("/delete/{cpf}") // DELETE
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remove(@PathVariable String cpf){
-        clienteRepository.deleteById(cpf);
-    }
+    public void remove(@PathVariable Long id) {
+        clienteRepository.deleteById(id);
 
+    }
 
 
 }

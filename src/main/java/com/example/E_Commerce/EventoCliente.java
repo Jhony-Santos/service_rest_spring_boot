@@ -9,13 +9,13 @@ public class EventoCliente extends ApplicationEvent {
 	private static final long serialVersionUID=1;
 	
 	private HttpServletResponse response;
-	private String cpf;
+	private Long id;
 	
 	
-	public EventoCliente(Object source, HttpServletResponse response, String cpf ){
+	public EventoCliente(Object source, HttpServletResponse response, Long id ){
 		super(source);
 		this.response = response;
-		this.cpf = cpf;
+		this.id = id;
 	}
 	
 
@@ -24,8 +24,8 @@ public class EventoCliente extends ApplicationEvent {
 	}
 	
 
-	public String getCpf() {
-		return cpf;
+	public Long getCpf() {
+		return id;
 	}
 
 
