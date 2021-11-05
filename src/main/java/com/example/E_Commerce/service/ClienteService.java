@@ -17,21 +17,21 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente update(Long cpf, Cliente cliente){
-        Optional<Cliente> verificarCliente=clienteRepository.findById(cpf);
+    public Cliente update(Long id, Cliente cliente){
+        Optional<Cliente> verificarCliente=clienteRepository.findById(id);
 
         if(verificarCliente.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
         Cliente clienteSalvo=verificarCliente.get();
-        BeanUtils.copyProperties(cliente, clienteSalvo, "cpf");
+        BeanUtils.copyProperties(cliente, clienteSalvo, "id");
 
         return clienteRepository.save(clienteSalvo);
     }
 
-    public ResponseEntity<Cliente> findClienteById(@PathVariable String cpf){
-        Optional<Cliente> cliente =clienteRepository.findById(cpf);
+    public ResponseEntity<Cliente> findClienteById(@PathVariable Long id){
+        Optional<Cliente> cliente =clienteRepository.findById(id);
 
         return cliente.isPresent() ? ResponseEntity.ok(cliente.get()): ResponseEntity.notFound().build();
 

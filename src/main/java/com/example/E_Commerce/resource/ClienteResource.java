@@ -55,7 +55,7 @@ public class ClienteResource {
         return ResponseEntity.ok(clienteSave);
     }
 
-    @DeleteMapping("/delete/{cpf}") // DELETE
+    @DeleteMapping("/delete/{id}") // DELETE
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remove(@PathVariable Long id) {
         clienteRepository.deleteById(id);
