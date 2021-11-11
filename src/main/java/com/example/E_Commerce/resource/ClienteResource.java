@@ -2,7 +2,10 @@ package com.example.E_Commerce.resource;
 
 
 import com.example.E_Commerce.EventoCliente;
+import com.example.E_Commerce.EventoGenerico;
+import com.example.E_Commerce.dto.PostClienteDTO;
 import com.example.E_Commerce.model.Cliente;
+import com.example.E_Commerce.model.Fornecedor;
 import com.example.E_Commerce.repository.ClienteRepository;
 import com.example.E_Commerce.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +38,20 @@ public class ClienteResource {
         return clienteRepository.findAll();
     }
 
-    @PostMapping("/create") // CREATE
-    public ResponseEntity create(@RequestBody Cliente cliente, HttpServletResponse response) {
 
-        Cliente clienteSalvo = clienteRepository.save(cliente);
-        publisher.publishEvent(new EventoCliente(this, response, clienteSalvo.getId()));
-        return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
+
+    @PostMapping("/create")
+    public ResponseEntity <List<Cliente>> create(@RequestBody PostClienteDTO clientes, HttpServletResponse response) {
+
+        System.out.println(clientes);
+
+        List<Cliente> listaSalva=clienteRepository.saveAll(clientes.getClientes());
+
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(listaSalva);
     }
+
+
 
     @GetMapping("/{id}") // READ
     public ResponseEntity<Cliente> findClienteById(@PathVariable Long id) {
@@ -64,3 +74,8 @@ public class ClienteResource {
 
 
 }
+
+
+  /*for(Cliente cliente:clientes.getClientes()){
+            Cliente clienteSalvo=clienteRepository.save(cliente); }
+       publisher.publishEvent(new EventoGenerico(this,response, listaSalva.getId()));*/
