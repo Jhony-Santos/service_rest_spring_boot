@@ -43,14 +43,10 @@ public class ClienteResource {
     @PostMapping("/create")
     public ResponseEntity <List<Cliente>> create(@RequestBody PostClienteDTO clientes, HttpServletResponse response) {
 
-        System.out.println(clientes);
+        List<Cliente> listaCliente=clienteRepository.saveAll(clientes.getClientes());
 
-        List<Cliente> listaSalva=clienteRepository.saveAll(clientes.getClientes());
-
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(listaSalva);
+        return ResponseEntity.status(HttpStatus.CREATED).body(listaCliente);
     }
-
 
 
     @GetMapping("/{id}") // READ

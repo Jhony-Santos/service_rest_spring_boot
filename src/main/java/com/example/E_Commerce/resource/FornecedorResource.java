@@ -2,6 +2,7 @@ package com.example.E_Commerce.resource;
 
 
 import com.example.E_Commerce.EventoGenerico;
+import com.example.E_Commerce.dto.PostFornecedorDTO;
 import com.example.E_Commerce.model.Fornecedor;
 import com.example.E_Commerce.repository.FornecedorRepository;
 import com.example.E_Commerce.service.FornecedorService;
@@ -36,11 +37,12 @@ public class FornecedorResource {
     }
 
     @PostMapping("/create")
-    public ResponseEntity create(@RequestBody Fornecedor fornecedor, HttpServletResponse response) {
+    public ResponseEntity <List<Fornecedor>> create(@RequestBody PostFornecedorDTO fornecedor, HttpServletResponse response) {
 
-        Fornecedor fornecedorSalvo=fornecedorRepository.save(fornecedor);
-        publisher.publishEvent(new EventoGenerico(this,response, fornecedorSalvo.getCnpj()));
-        return ResponseEntity.status(HttpStatus.CREATED).body(fornecedorSalvo);
+        List<Fornecedor> listaFornecedor=fornecedorRepository.saveAll(fornecedor.getFornecedor());
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(listaFornecedor);
+
     }
 
     @GetMapping("/{cnpj}")
