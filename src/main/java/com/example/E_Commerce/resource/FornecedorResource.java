@@ -45,24 +45,24 @@ public class FornecedorResource {
 
     }
 
-    @GetMapping("/{cnpj}")
-    public ResponseEntity<Fornecedor> findClienteById(@PathVariable String cnpj){
-        Optional<Fornecedor> fornecedor=fornecedorRepository.findById(cnpj);
+    @GetMapping("/{id}")
+    public ResponseEntity<Fornecedor> findClienteById(@PathVariable Long id){
+        Optional<Fornecedor> fornecedor=fornecedorRepository.findById(id);
         return fornecedor.isPresent() ? ResponseEntity.ok(fornecedor.get()): ResponseEntity.notFound().build();
     }
 
 
 
-    @PutMapping("update/{cnpj}")
-    public ResponseEntity<Fornecedor> update(@PathVariable String cnpj, @RequestBody Fornecedor fornecedor){
-        Fornecedor fornecedorSave=fornecedorService.update(cnpj,fornecedor);
+    @PutMapping("update/{id}")
+    public ResponseEntity<Fornecedor> update(@PathVariable Long id, @RequestBody Fornecedor fornecedor){
+        Fornecedor fornecedorSave=fornecedorService.update(id,fornecedor);
         return ResponseEntity.ok(fornecedorSave);
     }
 
-    @DeleteMapping("/{cnpj}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remove(@PathVariable String cnpj){
-        fornecedorRepository.deleteById(cnpj);
+    public void remove(@PathVariable Long id){
+        fornecedorRepository.deleteById(id);
     }
 
 

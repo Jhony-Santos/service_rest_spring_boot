@@ -20,8 +20,8 @@ public class FornecedorService {
     private FornecedorRepository fornecedorRepository;
 
 
-    public Fornecedor update(String cnpj, Fornecedor fornecedor){
-        Optional<Fornecedor> verificarFornecedor=fornecedorRepository.findById(cnpj);
+    public Fornecedor update(Long id, Fornecedor fornecedor){
+        Optional<Fornecedor> verificarFornecedor=fornecedorRepository.findById(id);
 
 
         if(verificarFornecedor.isEmpty()){
@@ -29,13 +29,13 @@ public class FornecedorService {
         }
 
         Fornecedor fornecedorSalvo=verificarFornecedor.get();
-        BeanUtils.copyProperties(fornecedor, fornecedorSalvo, "cpf");
+        BeanUtils.copyProperties(fornecedor, fornecedorSalvo, "id");
 
         return fornecedorRepository.save(fornecedorSalvo);
     }
 
-    public ResponseEntity<Fornecedor> findFornecedorById(@PathVariable String cnpj){
-        Optional<Fornecedor> fornecedor = fornecedorRepository.findById(cnpj);
+    public ResponseEntity<Fornecedor> findFornecedorById(@PathVariable Long id){
+        Optional<Fornecedor> fornecedor = fornecedorRepository.findById(id);
 
         return fornecedor.isPresent() ? ResponseEntity.ok(fornecedor.get()): ResponseEntity.notFound().build();
 

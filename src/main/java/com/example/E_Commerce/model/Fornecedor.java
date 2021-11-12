@@ -8,6 +8,9 @@ import java.util.Objects;
 public class Fornecedor {
 
     @Id
+    @GeneratedValue
+    private Long id;
+    @Column(unique = true)
     private String cnpj;
     private String nome;
     private String telefone;
@@ -16,23 +19,19 @@ public class Fornecedor {
     @Embedded
     private Endereco endereco;
 
-    public Fornecedor() {
-
+    public Long getId() {
+        return id;
     }
 
-    public Fornecedor(String cnpj, String nome, String telefone, String email, Endereco endereco) {
-        this.cnpj = cnpj;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.endereco=endereco;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCnpj() {
         return cnpj;
     }
 
-    public void setString(String cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 
@@ -60,10 +59,6 @@ public class Fornecedor {
         this.email = email;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
@@ -72,30 +67,16 @@ public class Fornecedor {
         this.endereco = endereco;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Fornecedor that = (Fornecedor) o;
-        return Objects.equals(cnpj, that.cnpj) && Objects.equals(nome, that.nome) && Objects.equals(telefone, that.telefone) && Objects.equals(email, that.email) && Objects.equals(endereco, that.endereco);
+        return cnpj.equals(that.cnpj);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cnpj, nome, telefone, email, endereco);
+        return Objects.hash(cnpj);
     }
-
-    @Override
-    public String toString() {
-        return "Fornecedor{" +
-                "cnpj='" + cnpj + '\'' +
-                ", nome='" + nome + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", email='" + email + '\'' +
-                ", endereco=" + endereco +
-                '}';
-    }
-
-
 }
