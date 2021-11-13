@@ -43,7 +43,9 @@ public class FornecedorResource {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(listaFornecedor);
 
+
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Fornecedor> findClienteById(@PathVariable Long id){

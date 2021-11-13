@@ -22,6 +22,15 @@ public class Fornecedor {
     public Long getId() {
         return id;
     }
+    public Fornecedor(){}
+
+    public Fornecedor(String cnpj, String nome, String telefone, String email, Endereco endereco) {
+        this.cnpj = cnpj;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.endereco = endereco;
+    }
 
     public void setId(Long id) {
         this.id = id;

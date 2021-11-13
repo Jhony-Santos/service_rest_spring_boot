@@ -4,14 +4,14 @@ import java.util.List;
 
 public class CompraDTO {
 
-    String id_fornecedor;
+    Long id_fornecedor;
     List<ItemCompraDTO> items;
 
-    public String getId_fornecedor() {
+    public Long getId_fornecedor() {
         return id_fornecedor;
     }
 
-    public void setId_fornecedor(String id_fornecedor) {
+    public void setId_fornecedor(Long id_fornecedor) {
         this.id_fornecedor = id_fornecedor;
     }
 
