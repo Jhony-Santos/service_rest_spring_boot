@@ -1,7 +1,6 @@
 package com.example.E_Commerce.resource;
 
 
-import com.example.E_Commerce.EventoGenerico;
 import com.example.E_Commerce.dto.PostFornecedorDTO;
 import com.example.E_Commerce.model.Fornecedor;
 import com.example.E_Commerce.repository.FornecedorRepository;
@@ -26,15 +25,31 @@ public class FornecedorResource {
     private FornecedorRepository fornecedorRepository;
 
     @Autowired
-    private FornecedorService fornecedorService;
+    private final FornecedorService fornecedorService;
 
     @Autowired
     private ApplicationEventPublisher publisher;
+
+    @Autowired
+    public FornecedorResource(FornecedorService fornecedorService) {
+        this.fornecedorService = fornecedorService;
+    }
+
+    @GetMapping()
+    public List<Fornecedor> getFornecedores(){
+        return fornecedorService.getFornecedores();
+    }
 
     @GetMapping
     public List<Fornecedor> list(){
         return fornecedorRepository.findAll();
     }
+
+    @PostMapping
+    public void registrandoFornecedor(@RequestBody Fornecedor fornecedor){
+        fornecedorService.adicionandoFornecedor(fornecedor);
+    }
+
 
     @PostMapping("/create")
     public ResponseEntity <List<Fornecedor>> create(@RequestBody PostFornecedorDTO fornecedor, HttpServletResponse response) {
