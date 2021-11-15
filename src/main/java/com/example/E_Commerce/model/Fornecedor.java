@@ -1,10 +1,13 @@
 package com.example.E_Commerce.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name="fornecedor")
+@Table(name = "fornecedor")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Fornecedor {
 
     @Id
@@ -87,5 +90,17 @@ public class Fornecedor {
     @Override
     public int hashCode() {
         return Objects.hash(cnpj);
+    }
+
+    @Override
+    public String toString() {
+        return "Fornecedor{" +
+                "id=" + id +
+                ", cnpj='" + cnpj + '\'' +
+                ", nome='" + nome + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", email='" + email + '\'' +
+                ", endereco=" + endereco +
+                '}';
     }
 }

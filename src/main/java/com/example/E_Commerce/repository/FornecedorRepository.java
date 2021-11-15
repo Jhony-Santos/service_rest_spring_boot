@@ -9,6 +9,5 @@ import java.util.Optional;
 @Repository
 public interface FornecedorRepository extends JpaRepository<Fornecedor,Long> {
 
-    @Override
-    Optional<Fornecedor> findById(Long id);
+    Optional<Fornecedor> findFornecedorById(Long id);
 }

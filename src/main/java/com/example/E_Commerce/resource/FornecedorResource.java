@@ -25,7 +25,7 @@ public class FornecedorResource {
     private FornecedorRepository fornecedorRepository;
 
     @Autowired
-    private final FornecedorService fornecedorService;
+    private FornecedorService fornecedorService;
 
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -40,25 +40,10 @@ public class FornecedorResource {
         return fornecedorService.getFornecedores();
     }
 
-    @GetMapping
-    public List<Fornecedor> list(){
-        return fornecedorRepository.findAll();
-    }
-
-    @PostMapping
-    public void registrandoFornecedor(@RequestBody Fornecedor fornecedor){
-        fornecedorService.adicionandoFornecedor(fornecedor);
-    }
-
 
     @PostMapping("/create")
-    public ResponseEntity <List<Fornecedor>> create(@RequestBody PostFornecedorDTO fornecedor, HttpServletResponse response) {
-
-        List<Fornecedor> listaFornecedor=fornecedorRepository.saveAll(fornecedor.getFornecedor());
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(listaFornecedor);
-
-
+    public void registrandoFornecedor(@RequestBody Fornecedor fornecedor){
+        fornecedorService.adicionandoFornecedor(fornecedor);
     }
 
 
@@ -69,7 +54,6 @@ public class FornecedorResource {
     }
 
 
-
     @PutMapping("update/{id}")
     public ResponseEntity<Fornecedor> update(@PathVariable Long id, @RequestBody Fornecedor fornecedor){
         Fornecedor fornecedorSave=fornecedorService.update(id,fornecedor);
@@ -78,10 +62,19 @@ public class FornecedorResource {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remove(@PathVariable Long id){
+    public void remove(@PathVariable("id_fornecedor") Long id){
         fornecedorRepository.deleteById(id);
+
     }
 
 
 
 }
+
+    /*@PostMapping("/create")
+    public ResponseEntity <List<Fornecedor>> create(@RequestBody PostFornecedorDTO fornecedor, HttpServletResponse response) {
+
+        List<Fornecedor> listaFornecedor=fornecedorRepository.saveAll(fornecedor.getFornecedor());
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(listaFornecedor);
+    }*/

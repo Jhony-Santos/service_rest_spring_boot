@@ -19,19 +19,28 @@ public class FornecedorService {
     @Autowired
     private FornecedorRepository fornecedorRepository;
 
-    private final FornecedorRepository forne_Repository;
 
     public FornecedorService(FornecedorRepository forne_repository) {
-        this.forne_Repository = forne_repository;
+        this.fornecedorRepository = forne_repository;
     }
 
     public List<Fornecedor> getFornecedores(){
-        return forne_Repository.findAll();
+        return fornecedorRepository.findAll();
+
+    }
+
+    public void deleteFornecedor(Long id_fornecedor){
+        boolean exists= fornecedorRepository.existsById(id_fornecedor);
+        if(!exists){
+            throw new IllegalStateException("Fornecedor "+ id_fornecedor +"não existe");
+        }
 
     }
 
     public Fornecedor update(Long id, Fornecedor fornecedor){
-        Optional<Fornecedor> verificarFornecedor=fornecedorRepository.findById(id);
+        //Optional<Fornecedor> verificarFornecedor=fornecedorRepository.findById(id);
+
+        Optional<Fornecedor> verificarFornecedor=fornecedorRepository.findFornecedorById(id);
 
 
         if(verificarFornecedor.isEmpty()){
@@ -52,6 +61,14 @@ public class FornecedorService {
     }
 
     public void adicionandoFornecedor(Fornecedor fornecedor) {
+
+        Optional<Fornecedor> fornecedorById=fornecedorRepository.findFornecedorById(fornecedor.getId());
+
+        if(fornecedorById.isPresent()){
+            throw new IllegalStateException("Fornecedor já cadastrado");
+        }
+        fornecedorRepository.save(fornecedor);
+
         System.out.println("Os fornecedores são: "+ fornecedor);
 
     }
