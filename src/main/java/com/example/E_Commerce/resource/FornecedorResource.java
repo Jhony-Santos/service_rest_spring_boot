@@ -44,24 +44,12 @@ public class FornecedorResource {
     }
 
 
-    /*@PostMapping("/create")
-    public Fornecedor regi_Fornecedor(@RequestBody Fornecedor fornecedor){
-         return fornecedorRepository.save(fornecedor);
-    }*/
-
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Fornecedor> findClienteById(@PathVariable Long id){
-        Optional<Fornecedor> fornecedor=fornecedorRepository.findById(id);
-        return fornecedor.isPresent() ? ResponseEntity.ok(fornecedor.get()): ResponseEntity.notFound().build();
-    }
-
-
     @PutMapping("update/{id}")
     public ResponseEntity<Fornecedor> update(@PathVariable Long id, @RequestBody Fornecedor fornecedor){
         Fornecedor fornecedorSave=fornecedorService.update(id,fornecedor);
         return ResponseEntity.ok(fornecedorSave);
     }
+
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -74,10 +62,36 @@ public class FornecedorResource {
 
 }
 
-    /*@PostMapping("/create")
+
+
+
+     /*@DeleteMapping("/id")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void remove(@PathVariable Long id){
+        fornecedorService.deleteFornecedor(id);
+    }*/
+
+
+
+
+     /*@PostMapping("/create")
+    public Fornecedor regi_Fornecedor(@RequestBody Fornecedor fornecedor){
+         return fornecedorRepository.save(fornecedor);
+    }
+
+
+
+    @PostMapping("/create")
     public ResponseEntity <List<Fornecedor>> create(@RequestBody PostFornecedorDTO fornecedor, HttpServletResponse response) {
 
         List<Fornecedor> listaFornecedor=fornecedorRepository.saveAll(fornecedor.getFornecedor());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(listaFornecedor);
+    }
+
+
+     @GetMapping("/{id}")
+    public ResponseEntity<Fornecedor> findClienteById(@PathVariable Long id){
+        Optional<Fornecedor> fornecedor=fornecedorRepository.findById(id);
+        return fornecedor.isPresent() ? ResponseEntity.ok(fornecedor.get()): ResponseEntity.notFound().build();
     }*/

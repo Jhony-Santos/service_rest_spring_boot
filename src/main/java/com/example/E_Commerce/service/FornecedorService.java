@@ -6,8 +6,10 @@ import com.example.E_Commerce.repository.FornecedorRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -19,9 +21,6 @@ public class FornecedorService {
     @Autowired
     private FornecedorRepository fornecedorRepository;
 
-    @Autowired
-    private FornecedorService fornecedorService;
-
 
     public FornecedorService(FornecedorRepository fornecedorRepository) {
         this.fornecedorRepository = fornecedorRepository;
@@ -29,14 +28,6 @@ public class FornecedorService {
 
     public List<Fornecedor> getFornecedores(){
         return fornecedorRepository.findAll();
-
-    }
-
-    public void deleteFornecedor(Long id_fornecedor){
-        boolean exists= fornecedorRepository.existsById(id_fornecedor);
-        if(!exists){
-            throw new IllegalStateException("Fornecedor "+ id_fornecedor +"não existe");
-        }
 
     }
 
