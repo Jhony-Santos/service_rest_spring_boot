@@ -34,34 +34,30 @@ public class ClienteResource {
     private ClienteService clienteService;
 
     @GetMapping
-    public List<Cliente> list() {
-        return clienteRepository.findAll();
+    public List<Cliente> getClientes() {
+        return clienteService.getClientes();
     }
 
 
-
-    @PostMapping("/create")
-    public ResponseEntity <List<Cliente>> create(@RequestBody PostClienteDTO clientes, HttpServletResponse response) {
-
-        List<Cliente> listaCliente=clienteRepository.saveAll(clientes.getClientes());
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(listaCliente);
+    @PostMapping
+    public void registrandoCliente(@RequestBody Cliente cliente){
+        clienteService.adicionandoCliente(cliente);
     }
 
 
-    @GetMapping("/{id}") // READ
+    @GetMapping("/{id}")
     public ResponseEntity<Cliente> findClienteById(@PathVariable Long id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);
         return cliente.isPresent() ? ResponseEntity.ok(cliente.get()) : ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/update/{id}")    // UPDATE
+    @PutMapping("/update/{id}")
     public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody Cliente cliente) {
         Cliente clienteSave = clienteService.update(id, cliente);
         return ResponseEntity.ok(clienteSave);
     }
 
-    @DeleteMapping("/delete/{id}") // DELETE
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remove(@PathVariable Long id) {
         clienteRepository.deleteById(id);
@@ -71,7 +67,3 @@ public class ClienteResource {
 
 }
 
-
-  /*for(Cliente cliente:clientes.getClientes()){
-            Cliente clienteSalvo=clienteRepository.save(cliente); }
-       publisher.publishEvent(new EventoGenerico(this,response, listaSalva.getId()));*/
