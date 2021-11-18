@@ -1,7 +1,6 @@
 package com.example.E_Commerce.resource;
 
 
-import com.example.E_Commerce.dto.PostFornecedorDTO;
 import com.example.E_Commerce.model.Fornecedor;
 import com.example.E_Commerce.repository.FornecedorRepository;
 import com.example.E_Commerce.service.FornecedorService;
@@ -12,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 /*import org.springframework.security.access.prepost.PreAuthorize;*/
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,11 +38,16 @@ public class FornecedorResource {
         return fornecedorService.getFornecedores();
     }
 
-
     @PostMapping("/create")
     public void registrandoFornecedor(@RequestBody Fornecedor fornecedor){
-        fornecedorService.adicionandoFornecedor(fornecedor);
+         fornecedorService.adicionandoFornecedor(fornecedor);
     }
+
+
+    /*@PostMapping("/create")
+    public Fornecedor regi_Fornecedor(@RequestBody Fornecedor fornecedor){
+         return fornecedorRepository.save(fornecedor);
+    }*/
 
 
     @GetMapping("/{id}")
@@ -62,7 +65,7 @@ public class FornecedorResource {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remove(@PathVariable("id_fornecedor") Long id){
+    public void remove(@PathVariable Long id){
         fornecedorRepository.deleteById(id);
 
     }

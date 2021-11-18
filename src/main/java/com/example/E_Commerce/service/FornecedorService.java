@@ -19,9 +19,12 @@ public class FornecedorService {
     @Autowired
     private FornecedorRepository fornecedorRepository;
 
+    @Autowired
+    private FornecedorService fornecedorService;
 
-    public FornecedorService(FornecedorRepository forne_repository) {
-        this.fornecedorRepository = forne_repository;
+
+    public FornecedorService(FornecedorRepository fornecedorRepository) {
+        this.fornecedorRepository = fornecedorRepository;
     }
 
     public List<Fornecedor> getFornecedores(){
@@ -38,7 +41,6 @@ public class FornecedorService {
     }
 
     public Fornecedor update(Long id, Fornecedor fornecedor){
-        //Optional<Fornecedor> verificarFornecedor=fornecedorRepository.findById(id);
 
         Optional<Fornecedor> verificarFornecedor=fornecedorRepository.findFornecedorById(id);
 
@@ -60,16 +62,15 @@ public class FornecedorService {
 
     }
 
-    public void adicionandoFornecedor(Fornecedor fornecedor) {
+    public Fornecedor adicionandoFornecedor(Fornecedor fornecedor) {
 
         Optional<Fornecedor> fornecedorById=fornecedorRepository.findFornecedorById(fornecedor.getId());
 
         if(fornecedorById.isPresent()){
             throw new IllegalStateException("Fornecedor já cadastrado");
         }
-        fornecedorRepository.save(fornecedor);
 
-        System.out.println("Os fornecedores são: "+ fornecedor);
+        return fornecedorRepository.save(fornecedor);
 
     }
 }
