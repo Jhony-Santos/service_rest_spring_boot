@@ -31,7 +31,7 @@ public class FornecedorService {
 
     }
 
-    public Fornecedor update(Long id, Fornecedor fornecedor){
+   public Fornecedor update(Long id, Fornecedor fornecedor){
 
         Optional<Fornecedor> verificarFornecedor=fornecedorRepository.findFornecedorById(id);
 

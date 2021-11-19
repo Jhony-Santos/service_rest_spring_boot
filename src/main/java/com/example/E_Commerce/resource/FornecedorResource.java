@@ -58,18 +58,12 @@ public class FornecedorResource {
 
     }
 
-
-
 }
 
 
 
 
-     /*@DeleteMapping("/id")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remove(@PathVariable Long id){
-        fornecedorService.deleteFornecedor(id);
-    }*/
+
 
 
 

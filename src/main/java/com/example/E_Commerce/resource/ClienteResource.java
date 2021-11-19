@@ -39,7 +39,7 @@ public class ClienteResource {
     }
 
 
-    @PostMapping
+    @PostMapping("/create")
     public void registrandoCliente(@RequestBody Cliente cliente){
         clienteService.adicionandoCliente(cliente);
     }
