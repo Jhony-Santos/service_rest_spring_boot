@@ -46,6 +46,10 @@ public class Product {
     private String permalink;
 
     @Embedded
+    private Brand brand;
+
+
+    @Embedded
     private Adress adress;
 
     public Long getId() {

@@ -1,13 +1,13 @@
 package com.example.E_Commerce.model;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Brand {
 
     private Long id;
 
-    private String marca_name;
+    private String name;
 
-    private Long ean;
-
-    private Long value_name;
 
 }
