@@ -1,7 +1,7 @@
 package com.example.E_Commerce.service;
 
 import com.example.E_Commerce.model.Product;
-import com.example.E_Commerce.repository.ProdutoRepository;
+import com.example.E_Commerce.repository.ProductRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -15,11 +15,11 @@ import java.util.Optional;
 public class ProdutoService {
 
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private ProductRepository productRepository;
 
 
     public Product update(Long codigo, Product product){
-        Optional<Product> verificarProduto=produtoRepository.findById(codigo);
+        Optional<Product> verificarProduto= productRepository.findById(codigo);
 
         if(verificarProduto.isEmpty()){
             throw new EmptyResultDataAccessException(1);
@@ -28,12 +28,12 @@ public class ProdutoService {
         Product productSalvo =verificarProduto.get();
         BeanUtils.copyProperties(product, productSalvo, "codigo");
 
-        return produtoRepository.save(productSalvo);
+        return productRepository.save(productSalvo);
     }
 
 
     public ResponseEntity<Product> findProdutoById(@PathVariable Long codigo){
-        Optional<Product> produto = produtoRepository.findById(codigo);
+        Optional<Product> produto = productRepository.findById(codigo);
 
         return produto.isPresent() ? ResponseEntity.ok(produto.get()): ResponseEntity.notFound().build();
 

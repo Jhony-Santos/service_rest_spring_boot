@@ -7,10 +7,10 @@ import com.example.E_Commerce.dto.ItemSaleDTO;
 import com.example.E_Commerce.dto.SaleDTO;
 import com.example.E_Commerce.form.AtualizacaoStatusForm;
 import com.example.E_Commerce.model.*;
-import com.example.E_Commerce.repository.ClienteRepository;
-import com.example.E_Commerce.repository.EstoqueRepository;
-import com.example.E_Commerce.repository.ProdutoRepository;
-import com.example.E_Commerce.repository.VendaRepository;
+import com.example.E_Commerce.repository.ClientRepository;
+import com.example.E_Commerce.repository.StockRepository;
+import com.example.E_Commerce.repository.ProductRepository;
+import com.example.E_Commerce.repository.SellRepository;
 import com.example.E_Commerce.service.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -31,19 +31,19 @@ import java.util.Optional;
 public class VendaResource {
 
     @Autowired
-    private VendaRepository vendaRepository;
+    private SellRepository sellRepository;
 
     @Autowired
     private VendaService vendaService;
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ClientRepository clientRepository;
 
     @Autowired
-    private EstoqueRepository estoqueRepository;
+    private StockRepository stockRepository;
 
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private ProductRepository productRepository;
 
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -51,7 +51,7 @@ public class VendaResource {
 
     @GetMapping
     public ResponseEntity<List<Sale>> findAllVenda(){
-        List <Sale> sale = vendaRepository.findAll();
+        List <Sale> sale = sellRepository.findAll();
         if(sale.isEmpty()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Nada de compra por enquanto");
         }
@@ -66,7 +66,7 @@ public class VendaResource {
 
             Sale saleSalva = new Sale();
 
-        Client client = clienteRepository.findById(venda.getId_client()).get(); // verificando a existência do cliente
+        Client client = clientRepository.findById(venda.getId_client()).get(); // verificando a existência do cliente
         saleSalva.setCliente(client);
         saleSalva.setStatus(false);
 
@@ -75,11 +75,11 @@ public class VendaResource {
 
         for(ItemSaleDTO i: venda.getItems()){
 
-            Product product = produtoRepository.findById(i.getId_produto()).get(); // verificando a existência do produto
-            Stock stock =estoqueRepository.findByProduto(product);// verifico se o produto possui estoque
+            Product product = productRepository.findById(i.getId_produto()).get(); // verificando a existência do produto
+            Stock stock = stockRepository.findByProduto(product);// verifico se o produto possui estoque
 
-            int quantidade_produto_estoque=estoqueRepository.findByProduto(stock.getProduct()).getQuantity();
-            double valor_venda_produto=estoqueRepository.findByProduto(stock.getProduct()).getValor();
+            int quantidade_produto_estoque= stockRepository.findByProduto(stock.getProduct()).getQuantity();
+            double valor_venda_produto= stockRepository.findByProduto(stock.getProduct()).getValor();
 
             if(product !=null && quantidade_produto_estoque > 0 && valor_venda_produto > 0){ // caminho feliz
 
@@ -98,8 +98,8 @@ public class VendaResource {
                     stock.setQuantity(stock.getQuantity() - i.getQuantity());
                     stock.getValor();
 
-                estoqueRepository.save(stock);
-                saleSalva =vendaRepository.save(saleSalva);
+                stockRepository.save(stock);
+                saleSalva = sellRepository.save(saleSalva);
             }
 
             }
@@ -117,7 +117,7 @@ public class VendaResource {
 
     @GetMapping("/{id}")
     public ResponseEntity<Sale> findClienteById(@PathVariable Long id){
-        Optional<Sale> venda = vendaRepository.findById(id);
+        Optional<Sale> venda = sellRepository.findById(id);
         return venda.isPresent() ? ResponseEntity.ok(venda.get()): ResponseEntity.notFound().build();
     }
 
@@ -130,7 +130,7 @@ public class VendaResource {
     @PutMapping("confirmarRecebimento/{id}")
     @Transactional
     public ResponseEntity<String> confirmaRecebimento(@PathVariable Long id, @RequestBody AtualizacaoStatusForm atualizacao){
-        atualizacao.atualizar(id,vendaRepository);
+        atualizacao.atualizar(id, sellRepository);
         String confirmada="Venda confirmada com sucesso, fique atento que sua entrega chegará pelo drone";
         return ResponseEntity.ok(confirmada);
     }

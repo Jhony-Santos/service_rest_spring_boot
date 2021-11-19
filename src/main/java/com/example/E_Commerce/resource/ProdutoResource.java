@@ -3,8 +3,8 @@ package com.example.E_Commerce.resource;
 import com.example.E_Commerce.EventoGenerico;
 import com.example.E_Commerce.model.Product;
 import com.example.E_Commerce.model.Stock;
-import com.example.E_Commerce.repository.EstoqueRepository;
-import com.example.E_Commerce.repository.ProdutoRepository;
+import com.example.E_Commerce.repository.StockRepository;
+import com.example.E_Commerce.repository.ProductRepository;
 import com.example.E_Commerce.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -24,7 +24,7 @@ import java.util.Optional;
 public class ProdutoResource {
 
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private ProductRepository productRepository;
 
     @Autowired
     private ProdutoService produtoService;
@@ -33,12 +33,12 @@ public class ProdutoResource {
     private ApplicationEventPublisher publisher;
 
     @Autowired
-    private EstoqueRepository estoqueRepository;
+    private StockRepository stockRepository;
 
 
     @GetMapping
     public List<Product> listSimples(){
-        return produtoRepository.findAll();
+        return productRepository.findAll();
     }
 
     @GetMapping("/listarProdutos")
@@ -46,7 +46,7 @@ public class ProdutoResource {
 
         List<Product> listaProducts =new ArrayList<>();
 
-        for(Stock i: estoqueRepository.findAll()){
+        for(Stock i: stockRepository.findAll()){
 
             if(i.getQuantity() > 0 && i.getValor() > 0 ){ // caminho feliz
                     listaProducts.add(i.getProduct());
@@ -60,13 +60,13 @@ public class ProdutoResource {
     @PostMapping("/create")// CREATE
     public ResponseEntity create(@RequestBody Product product, HttpServletResponse response) {
 
-        Product productSalvo =produtoRepository.save(product);
+        Product productSalvo = productRepository.save(product);
 
         Stock stock = new Stock();
         stock.setValor(0.00);
         stock.setQuantity(0);
         stock.setProduct(productSalvo);
-        estoqueRepository.save(stock);
+        stockRepository.save(stock);
 
         publisher.publishEvent(new EventoGenerico(this,response, productSalvo.getId()));
         return ResponseEntity.status(HttpStatus.CREATED).body(productSalvo);
@@ -74,7 +74,7 @@ public class ProdutoResource {
 
     @GetMapping("/{codigo}")
     public ResponseEntity<Product> findProdutoById(@PathVariable Long codigo){
-        Optional<Product> produto=produtoRepository.findById(codigo);
+        Optional<Product> produto= productRepository.findById(codigo);
         return produto.isPresent() ? ResponseEntity.ok(produto.get()): ResponseEntity.notFound().build();
     }
 
@@ -88,7 +88,7 @@ public class ProdutoResource {
     @DeleteMapping("/delete/{codigo}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remove(@PathVariable Long codigo ){
-        produtoRepository.deleteById(codigo);
+        productRepository.deleteById(codigo);
     }
 
 

@@ -1,7 +1,7 @@
 package com.example.E_Commerce.resource;
 
 import com.example.E_Commerce.model.ItemsCompra;
-import com.example.E_Commerce.repository.ItemsCompraRepository;
+import com.example.E_Commerce.repository.ItemsBuyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,14 +15,14 @@ import java.util.List;
 public class ItemsCompraResource {
 
     @Autowired
-    private ItemsCompraRepository itemsCompraRepository;
+    private ItemsBuyRepository itemsBuyRepository;
 
     @Autowired
     private ApplicationEventPublisher publisher;
 
     @GetMapping
     public List<ItemsCompra> list(){
-        return itemsCompraRepository.findAll();
+        return itemsBuyRepository.findAll();
     }
 
 

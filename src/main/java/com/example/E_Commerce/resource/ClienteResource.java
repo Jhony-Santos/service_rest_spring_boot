@@ -2,7 +2,7 @@ package com.example.E_Commerce.resource;
 
 
 import com.example.E_Commerce.model.Client;
-import com.example.E_Commerce.repository.ClienteRepository;
+import com.example.E_Commerce.repository.ClientRepository;
 import com.example.E_Commerce.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class ClienteResource {
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ClientRepository clientRepository;
 
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -42,7 +42,7 @@ public class ClienteResource {
 
     @GetMapping("/{id}")
     public ResponseEntity<Client> findClienteById(@PathVariable Long id) {
-        Optional<Client> cliente = clienteRepository.findById(id);
+        Optional<Client> cliente = clientRepository.findById(id);
         return cliente.isPresent() ? ResponseEntity.ok(cliente.get()) : ResponseEntity.notFound().build();
     }
 
@@ -55,7 +55,7 @@ public class ClienteResource {
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remove(@PathVariable Long id) {
-        clienteRepository.deleteById(id);
+        clientRepository.deleteById(id);
 
     }
 

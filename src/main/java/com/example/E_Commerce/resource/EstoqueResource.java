@@ -1,7 +1,7 @@
 package com.example.E_Commerce.resource;
 
 import com.example.E_Commerce.model.Stock;
-import com.example.E_Commerce.repository.EstoqueRepository;
+import com.example.E_Commerce.repository.StockRepository;
 import com.example.E_Commerce.service.EstoqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -23,7 +23,7 @@ public class EstoqueResource {
     private EstoqueService estoqueService;
 
     @Autowired
-    private EstoqueRepository estoqueRepository;
+    private StockRepository stockRepository;
 
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -33,7 +33,7 @@ public class EstoqueResource {
 
     @GetMapping // READ all
     public ResponseEntity<List<Stock>> findAllEstoque(){
-        List <Stock> stock =estoqueRepository.findAll();
+        List <Stock> stock = stockRepository.findAll();
         if(stock.isEmpty()){
             String erro="Não existe nenhum dado em estoque";
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,erro);
@@ -45,7 +45,7 @@ public class EstoqueResource {
 
     @GetMapping("/{id}") // READ
     public ResponseEntity<Stock> findEstoqueById(@PathVariable Long id){
-        Optional<Stock> estoque=estoqueRepository.findById(id);
+        Optional<Stock> estoque= stockRepository.findById(id);
 
         //System.out.println(estoque);
 

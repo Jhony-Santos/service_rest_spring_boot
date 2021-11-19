@@ -2,7 +2,7 @@ package com.example.E_Commerce.service;
 
 
 import com.example.E_Commerce.model.Seller;
-import com.example.E_Commerce.repository.FornecedorRepository;
+import com.example.E_Commerce.repository.SellerRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -17,21 +17,21 @@ import java.util.Optional;
 public class FornecedorService {
 
     @Autowired
-    private FornecedorRepository fornecedorRepository;
+    private SellerRepository sellerRepository;
 
 
-    public FornecedorService(FornecedorRepository fornecedorRepository) {
-        this.fornecedorRepository = fornecedorRepository;
+    public FornecedorService(SellerRepository sellerRepository) {
+        this.sellerRepository = sellerRepository;
     }
 
     public List<Seller> getFornecedores(){
-        return fornecedorRepository.findAll();
+        return sellerRepository.findAll();
 
     }
 
    public Seller update(Long id, Seller seller){
 
-        Optional<Seller> verificarFornecedor=fornecedorRepository.findFornecedorById(id);
+        Optional<Seller> verificarFornecedor= sellerRepository.findFornecedorById(id);
 
 
         if(verificarFornecedor.isEmpty()){
@@ -41,11 +41,11 @@ public class FornecedorService {
         Seller sellerSalvo =verificarFornecedor.get();
         BeanUtils.copyProperties(seller, sellerSalvo, "id");
 
-        return fornecedorRepository.save(sellerSalvo);
+        return sellerRepository.save(sellerSalvo);
     }
 
     public ResponseEntity<Seller> findFornecedorById(@PathVariable Long id){
-        Optional<Seller> fornecedor = fornecedorRepository.findById(id);
+        Optional<Seller> fornecedor = sellerRepository.findById(id);
 
         return fornecedor.isPresent() ? ResponseEntity.ok(fornecedor.get()): ResponseEntity.notFound().build();
 
@@ -53,13 +53,13 @@ public class FornecedorService {
 
     public Seller adicionandoFornecedor(Seller seller) {
 
-        Optional<Seller> fornecedorById=fornecedorRepository.findFornecedorById(seller.getId());
+        Optional<Seller> fornecedorById= sellerRepository.findFornecedorById(seller.getId());
 
         if(fornecedorById.isPresent()){
             throw new IllegalStateException("Fornecedor já cadastrado");
         }
 
-        return fornecedorRepository.save(seller);
+        return sellerRepository.save(seller);
 
     }
 }

@@ -1,7 +1,7 @@
 package com.example.E_Commerce.form;
 
 import com.example.E_Commerce.model.Sale;
-import com.example.E_Commerce.repository.VendaRepository;
+import com.example.E_Commerce.repository.SellRepository;
 
 public class AtualizacaoStatusForm {
 
@@ -16,8 +16,8 @@ public class AtualizacaoStatusForm {
 		this.status = status;
 	}
 
-	public Sale atualizar(Long id, VendaRepository vendaRepository) {
-		Sale sale = vendaRepository.getOne(id);
+	public Sale atualizar(Long id, SellRepository sellRepository) {
+		Sale sale = sellRepository.getOne(id);
 		sale.setStatus(this.status);
 
 		return sale;

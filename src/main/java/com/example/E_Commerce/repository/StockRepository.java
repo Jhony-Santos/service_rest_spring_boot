@@ -4,7 +4,7 @@ import com.example.E_Commerce.model.Product;
 import com.example.E_Commerce.model.Stock;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EstoqueRepository extends JpaRepository<Stock, Long> {
+public interface StockRepository extends JpaRepository<Stock, Long> {
 
     Stock findByProduto(Product product);
 

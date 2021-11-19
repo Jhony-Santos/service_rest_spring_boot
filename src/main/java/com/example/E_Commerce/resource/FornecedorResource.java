@@ -2,7 +2,7 @@ package com.example.E_Commerce.resource;
 
 
 import com.example.E_Commerce.model.Seller;
-import com.example.E_Commerce.repository.FornecedorRepository;
+import com.example.E_Commerce.repository.SellerRepository;
 import com.example.E_Commerce.service.FornecedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -19,7 +19,7 @@ import java.util.List;
 public class FornecedorResource {
 
     @Autowired
-    private FornecedorRepository fornecedorRepository;
+    private SellerRepository sellerRepository;
 
     @Autowired
     private FornecedorService fornecedorService;
@@ -53,7 +53,7 @@ public class FornecedorResource {
     @DeleteMapping("delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remove(@PathVariable Long id){
-        fornecedorRepository.deleteById(id);
+        sellerRepository.deleteById(id);
 
     }
 
