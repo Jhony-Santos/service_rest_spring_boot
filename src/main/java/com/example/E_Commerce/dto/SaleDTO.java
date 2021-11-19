@@ -2,10 +2,10 @@ package com.example.E_Commerce.dto;
 
 import java.util.List;
 
-public class VendaDTO {
+public class SaleDTO {
 
     Long id_cliente;
-    List<ItemVendaDTO> items;
+    List<ItemSaleDTO> items;
 
 
     public Long getId_cliente() {
@@ -16,11 +16,11 @@ public class VendaDTO {
         this.id_cliente = id_cliente;
     }
 
-    public List<ItemVendaDTO> getItems() {
+    public List<ItemSaleDTO> getItems() {
         return items;
     }
 
-    public void setItems(List<ItemVendaDTO> items) {
+    public void setItems(List<ItemSaleDTO> items) {
         this.items = items;
     }
 }

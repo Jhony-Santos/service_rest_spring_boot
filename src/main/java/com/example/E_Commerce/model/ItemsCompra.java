@@ -15,12 +15,12 @@ public class ItemsCompra {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name="codigo_compra")
-    private Compra compra;
+    private Buy buy;
     
 
     @ManyToOne
     @JoinColumn(name="codigo_produto")
-    private Produto produto;
+    private Product product;
 
     private Integer quantidade;
     private Double valor;
@@ -33,20 +33,20 @@ public class ItemsCompra {
         this.id = id;
     }
 
-    public Compra getCompra() {
-        return compra;
+    public Buy getCompra() {
+        return buy;
     }
 
-    public void setCompra(Compra compra) {
-        this.compra = compra;
+    public void setCompra(Buy buy) {
+        this.buy = buy;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public Product getProduto() {
+        return product;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setProduto(Product product) {
+        this.product = product;
     }
 
     public Integer getQuantidade() {

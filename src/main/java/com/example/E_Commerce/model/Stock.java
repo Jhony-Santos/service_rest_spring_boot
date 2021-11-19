@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name="estoque")
-public class Estoque {
+public class Stock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class Estoque {
 
     @OneToOne(fetch= FetchType.EAGER) // pega produto automaticamente, mapeamento do banco
     @JoinColumn(name="codigo_produto") // id de produto, cada produto tem um estoque
-    private Produto produto;
+    private Product product;
 
     private Integer quantidade;
     private Double valor;
@@ -29,12 +29,12 @@ public class Estoque {
         this.id = id;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public Product getProduto() {
+        return product;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setProduto(Product product) {
+        this.product = product;
     }
 
     public Integer getQuantidade() {
@@ -57,7 +57,7 @@ public class Estoque {
     public String toString() {
         return "Estoque{" +
                 "id=" + id +
-                ", produto=" + produto +
+                ", produto=" + product +
                 ", quantidade=" + quantidade +
                 ", valor=" + valor +
                 '}';
@@ -67,8 +67,8 @@ public class Estoque {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Estoque estoque = (Estoque) o;
-        return id.equals(estoque.id);
+        Stock stock = (Stock) o;
+        return id.equals(stock.id);
     }
 
     @Override

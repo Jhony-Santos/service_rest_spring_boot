@@ -1,11 +1,8 @@
 package com.example.E_Commerce.resource;
 
-import com.example.E_Commerce.EventoCliente;
 import com.example.E_Commerce.EventoGenerico;
-import com.example.E_Commerce.dto.CompraDTO;
-import com.example.E_Commerce.model.Cliente;
-import com.example.E_Commerce.model.Estoque;
-import com.example.E_Commerce.model.Produto;
+import com.example.E_Commerce.model.Product;
+import com.example.E_Commerce.model.Stock;
 import com.example.E_Commerce.repository.EstoqueRepository;
 import com.example.E_Commerce.repository.ProdutoRepository;
 import com.example.E_Commerce.service.ProdutoService;
@@ -40,51 +37,51 @@ public class ProdutoResource {
 
 
     @GetMapping
-    public List<Produto> listSimples(){
+    public List<Product> listSimples(){
         return produtoRepository.findAll();
     }
 
     @GetMapping("/listarProdutos")
-    public List<Produto> list(){
+    public List<Product> list(){
 
-        List<Produto> listaProdutos=new ArrayList<>();
+        List<Product> listaProducts =new ArrayList<>();
 
-        for(Estoque i: estoqueRepository.findAll()){
+        for(Stock i: estoqueRepository.findAll()){
 
             if(i.getQuantidade() > 0 && i.getValor() > 0 ){ // caminho feliz
-                    listaProdutos.add(i.getProduto());
+                    listaProducts.add(i.getProduto());
 
             }
         }
-        return listaProdutos;
+        return listaProducts;
     }
 
 
     @PostMapping("/create")// CREATE
-    public ResponseEntity create(@RequestBody Produto produto, HttpServletResponse response) {
+    public ResponseEntity create(@RequestBody Product product, HttpServletResponse response) {
 
-        Produto produtoSalvo=produtoRepository.save(produto);
+        Product productSalvo =produtoRepository.save(product);
 
-        Estoque estoque = new Estoque();
-        estoque.setValor(0.00);
-        estoque.setQuantidade(0);
-        estoque.setProduto(produtoSalvo);
-        estoqueRepository.save(estoque);
+        Stock stock = new Stock();
+        stock.setValor(0.00);
+        stock.setQuantidade(0);
+        stock.setProduto(productSalvo);
+        estoqueRepository.save(stock);
 
-        publisher.publishEvent(new EventoGenerico(this,response, produtoSalvo.getId()));
-        return ResponseEntity.status(HttpStatus.CREATED).body(produtoSalvo);
+        publisher.publishEvent(new EventoGenerico(this,response, productSalvo.getId()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(productSalvo);
     }
 
     @GetMapping("/{codigo}")
-    public ResponseEntity<Produto> findProdutoById(@PathVariable Long codigo){
-        Optional<Produto> produto=produtoRepository.findById(codigo);
+    public ResponseEntity<Product> findProdutoById(@PathVariable Long codigo){
+        Optional<Product> produto=produtoRepository.findById(codigo);
         return produto.isPresent() ? ResponseEntity.ok(produto.get()): ResponseEntity.notFound().build();
     }
 
     @PutMapping("/update/{codigo}")
-    public ResponseEntity<Produto> update(@PathVariable Long codigo, @RequestBody Produto produto){
-        Produto produtoSave=produtoService.update(codigo,produto);
-        return ResponseEntity.ok(produtoSave);
+    public ResponseEntity<Product> update(@PathVariable Long codigo, @RequestBody Product product){
+        Product productSave =produtoService.update(codigo, product);
+        return ResponseEntity.ok(productSave);
     }
 
 

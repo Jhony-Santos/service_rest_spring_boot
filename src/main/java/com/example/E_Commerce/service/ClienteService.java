@@ -1,7 +1,6 @@
 package com.example.E_Commerce.service;
 
-import com.example.E_Commerce.model.Cliente;
-import com.example.E_Commerce.model.Fornecedor;
+import com.example.E_Commerce.model.Client;
 import com.example.E_Commerce.repository.ClienteRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,41 +25,41 @@ public class ClienteService {
         this.clienteRepository=clienteRepository;
     }
 
-    public List<Cliente> getClientes(){
+    public List<Client> getClientes(){
         return clienteRepository.findAll();
     }
 
 
-    public Cliente update(Long id, Cliente cliente){
-        Optional<Cliente> verificarCliente=clienteRepository.findById(id);
+    public Client update(Long id, Client client){
+        Optional<Client> verificarCliente=clienteRepository.findById(id);
 
         if(verificarCliente.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Cliente clienteSalvo=verificarCliente.get();
-        BeanUtils.copyProperties(cliente, clienteSalvo, "id");
+        Client clientSalvo =verificarCliente.get();
+        BeanUtils.copyProperties(client, clientSalvo, "id");
 
-        return clienteRepository.save(clienteSalvo);
+        return clienteRepository.save(clientSalvo);
     }
 
-    public ResponseEntity<Cliente> findClienteById(@PathVariable Long id){
-        Optional<Cliente> cliente =clienteRepository.findById(id);
+    public ResponseEntity<Client> findClienteById(@PathVariable Long id){
+        Optional<Client> cliente =clienteRepository.findById(id);
 
         return cliente.isPresent() ? ResponseEntity.ok(cliente.get()): ResponseEntity.notFound().build();
 
     }
 
 
-    public Cliente adicionandoCliente(Cliente cliente) {
+    public Client adicionandoCliente(Client client) {
 
-        Optional<Cliente> clienteById=clienteRepository.findClienteById((cliente.getId()));
+        Optional<Client> clienteById=clienteRepository.findClienteById((client.getId()));
 
         if(clienteById.isPresent()){
             throw new IllegalStateException("Cliente já cadastrado");
         }
 
-        return clienteRepository.save(cliente);
+        return clienteRepository.save(client);
 
     }
 

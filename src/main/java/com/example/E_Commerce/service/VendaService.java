@@ -1,6 +1,6 @@
 package com.example.E_Commerce.service;
 
-import com.example.E_Commerce.model.Venda;
+import com.example.E_Commerce.model.Sale;
 import com.example.E_Commerce.repository.VendaRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +17,22 @@ public class VendaService {
     @Autowired
     private VendaRepository vendaRepository;
 
-    public Venda update(Long id , Venda venda){
-        Optional<Venda> verificarVenda=vendaRepository.findById(id);
+    public Sale update(Long id , Sale sale){
+        Optional<Sale> verificarVenda=vendaRepository.findById(id);
 
         if(verificarVenda.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Venda vendaSalva=verificarVenda.get();
-        BeanUtils.copyProperties(venda, vendaSalva, "id");
+        Sale saleSalva =verificarVenda.get();
+        BeanUtils.copyProperties(sale, saleSalva, "id");
 
-        return vendaRepository.save(vendaSalva);
+        return vendaRepository.save(saleSalva);
     }
 
 
-    public ResponseEntity<Venda> findVendaById(@PathVariable Long id){
-        Optional<Venda> venda = vendaRepository.findById(id);
+    public ResponseEntity<Sale> findVendaById(@PathVariable Long id){
+        Optional<Sale> venda = vendaRepository.findById(id);
 
         return venda.isPresent() ? ResponseEntity.ok(venda.get()): ResponseEntity.notFound().build();
 

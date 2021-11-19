@@ -1,8 +1,6 @@
 package com.example.E_Commerce.service;
 
-import com.example.E_Commerce.model.Cliente;
-import com.example.E_Commerce.model.Produto;
-import com.example.E_Commerce.repository.FornecedorRepository;
+import com.example.E_Commerce.model.Product;
 import com.example.E_Commerce.repository.ProdutoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,22 +18,22 @@ public class ProdutoService {
     private ProdutoRepository produtoRepository;
 
 
-    public Produto update(Long codigo, Produto produto){
-        Optional<Produto> verificarProduto=produtoRepository.findById(codigo);
+    public Product update(Long codigo, Product product){
+        Optional<Product> verificarProduto=produtoRepository.findById(codigo);
 
         if(verificarProduto.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Produto produtoSalvo=verificarProduto.get();
-        BeanUtils.copyProperties(produto, produtoSalvo, "codigo");
+        Product productSalvo =verificarProduto.get();
+        BeanUtils.copyProperties(product, productSalvo, "codigo");
 
-        return produtoRepository.save(produtoSalvo);
+        return produtoRepository.save(productSalvo);
     }
 
 
-    public ResponseEntity<Produto> findProdutoById(@PathVariable Long codigo){
-        Optional<Produto> produto = produtoRepository.findById(codigo);
+    public ResponseEntity<Product> findProdutoById(@PathVariable Long codigo){
+        Optional<Product> produto = produtoRepository.findById(codigo);
 
         return produto.isPresent() ? ResponseEntity.ok(produto.get()): ResponseEntity.notFound().build();
 

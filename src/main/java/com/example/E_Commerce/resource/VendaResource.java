@@ -3,8 +3,8 @@ package com.example.E_Commerce.resource;
 
 import com.example.E_Commerce.EventoGenerico;
 
-import com.example.E_Commerce.dto.ItemVendaDTO;
-import com.example.E_Commerce.dto.VendaDTO;
+import com.example.E_Commerce.dto.ItemSaleDTO;
+import com.example.E_Commerce.dto.SaleDTO;
 import com.example.E_Commerce.form.AtualizacaoStatusForm;
 import com.example.E_Commerce.model.*;
 import com.example.E_Commerce.repository.ClienteRepository;
@@ -50,56 +50,56 @@ public class VendaResource {
 
 
     @GetMapping
-    public ResponseEntity<List<Venda>> findAllVenda(){
-        List <Venda> venda = vendaRepository.findAll();
-        if(venda.isEmpty()){
+    public ResponseEntity<List<Sale>> findAllVenda(){
+        List <Sale> sale = vendaRepository.findAll();
+        if(sale.isEmpty()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Nada de compra por enquanto");
         }
 
-        return ResponseEntity.ok().body(venda);
+        return ResponseEntity.ok().body(sale);
 
     }
 
 
     @PostMapping("/create")
-    public ResponseEntity create(@RequestBody VendaDTO venda, HttpServletResponse response) {
+    public ResponseEntity create(@RequestBody SaleDTO venda, HttpServletResponse response) {
 
-            Venda vendaSalva = new Venda();
+            Sale saleSalva = new Sale();
 
-        Cliente cliente = clienteRepository.findById(venda.getId_cliente()).get(); // verificando a existência do cliente
-        vendaSalva.setCliente(cliente);
-        vendaSalva.setStatus(false);
+        Client client = clienteRepository.findById(venda.getId_cliente()).get(); // verificando a existência do cliente
+        saleSalva.setCliente(client);
+        saleSalva.setStatus(false);
 
 
         // preciso de dois laços para melhor verificação
 
-        for(ItemVendaDTO i: venda.getItems()){
+        for(ItemSaleDTO i: venda.getItems()){
 
-            Produto produto = produtoRepository.findById(i.getId_produto()).get(); // verificando a existência do produto
-            Estoque estoque=estoqueRepository.findByProduto(produto);// verifico se o produto possui estoque
+            Product product = produtoRepository.findById(i.getId_produto()).get(); // verificando a existência do produto
+            Stock stock =estoqueRepository.findByProduto(product);// verifico se o produto possui estoque
 
-            int quantidade_produto_estoque=estoqueRepository.findByProduto(estoque.getProduto()).getQuantidade();
-            double valor_venda_produto=estoqueRepository.findByProduto(estoque.getProduto()).getValor();
+            int quantidade_produto_estoque=estoqueRepository.findByProduto(stock.getProduto()).getQuantidade();
+            double valor_venda_produto=estoqueRepository.findByProduto(stock.getProduto()).getValor();
 
-            if(produto!=null && quantidade_produto_estoque > 0 && valor_venda_produto > 0){ // caminho feliz
+            if(product !=null && quantidade_produto_estoque > 0 && valor_venda_produto > 0){ // caminho feliz
 
-                for(ItemVendaDTO cont : venda.getItems() ){
+                for(ItemSaleDTO cont : venda.getItems() ){
 
                     ItemsVenda itemsVenda = new ItemsVenda();
 
                     // SALVAR ITEMS NA LISTA DE VENDAS
-                    itemsVenda.setProduto(produto);
+                    itemsVenda.setProduto(product);
                     itemsVenda.setQuantidade(cont.getQuantidade());
                     itemsVenda.setValor(cont.getValor());
-                    itemsVenda.setVenda(vendaSalva);
-                    vendaSalva.addItem(itemsVenda);
+                    itemsVenda.setVenda(saleSalva);
+                    saleSalva.addItem(itemsVenda);
 
-                    estoque.getProduto();
-                    estoque.setQuantidade(estoque.getQuantidade() - i.getQuantidade());
-                    estoque.getValor();
+                    stock.getProduto();
+                    stock.setQuantidade(stock.getQuantidade() - i.getQuantidade());
+                    stock.getValor();
 
-                estoqueRepository.save(estoque);
-                vendaSalva=vendaRepository.save(vendaSalva);
+                estoqueRepository.save(stock);
+                saleSalva =vendaRepository.save(saleSalva);
             }
 
             }
@@ -110,21 +110,21 @@ public class VendaResource {
         }
 
 
-        publisher.publishEvent(new EventoGenerico(this,response,vendaSalva.getId()));
-        return ResponseEntity.status(HttpStatus.CREATED).body(vendaSalva);
+        publisher.publishEvent(new EventoGenerico(this,response, saleSalva.getId()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(saleSalva);
 
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Venda> findClienteById(@PathVariable Long id){
-        Optional<Venda> venda = vendaRepository.findById(id);
+    public ResponseEntity<Sale> findClienteById(@PathVariable Long id){
+        Optional<Sale> venda = vendaRepository.findById(id);
         return venda.isPresent() ? ResponseEntity.ok(venda.get()): ResponseEntity.notFound().build();
     }
 
     @PutMapping("update/{id}")
-    public ResponseEntity<Venda> update(@PathVariable Long id, @RequestBody Venda venda){
-        Venda vendaSave = vendaService.update(id,venda);
-        return ResponseEntity.ok(vendaSave);
+    public ResponseEntity<Sale> update(@PathVariable Long id, @RequestBody Sale sale){
+        Sale saleSave = vendaService.update(id, sale);
+        return ResponseEntity.ok(saleSave);
     }
 
     @PutMapping("confirmarRecebimento/{id}")

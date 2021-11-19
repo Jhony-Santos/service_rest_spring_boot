@@ -1,15 +1,13 @@
 package com.example.E_Commerce.service;
 
 
-import com.example.E_Commerce.model.Fornecedor;
+import com.example.E_Commerce.model.Seller;
 import com.example.E_Commerce.repository.FornecedorRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -26,42 +24,42 @@ public class FornecedorService {
         this.fornecedorRepository = fornecedorRepository;
     }
 
-    public List<Fornecedor> getFornecedores(){
+    public List<Seller> getFornecedores(){
         return fornecedorRepository.findAll();
 
     }
 
-   public Fornecedor update(Long id, Fornecedor fornecedor){
+   public Seller update(Long id, Seller seller){
 
-        Optional<Fornecedor> verificarFornecedor=fornecedorRepository.findFornecedorById(id);
+        Optional<Seller> verificarFornecedor=fornecedorRepository.findFornecedorById(id);
 
 
         if(verificarFornecedor.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Fornecedor fornecedorSalvo=verificarFornecedor.get();
-        BeanUtils.copyProperties(fornecedor, fornecedorSalvo, "id");
+        Seller sellerSalvo =verificarFornecedor.get();
+        BeanUtils.copyProperties(seller, sellerSalvo, "id");
 
-        return fornecedorRepository.save(fornecedorSalvo);
+        return fornecedorRepository.save(sellerSalvo);
     }
 
-    public ResponseEntity<Fornecedor> findFornecedorById(@PathVariable Long id){
-        Optional<Fornecedor> fornecedor = fornecedorRepository.findById(id);
+    public ResponseEntity<Seller> findFornecedorById(@PathVariable Long id){
+        Optional<Seller> fornecedor = fornecedorRepository.findById(id);
 
         return fornecedor.isPresent() ? ResponseEntity.ok(fornecedor.get()): ResponseEntity.notFound().build();
 
     }
 
-    public Fornecedor adicionandoFornecedor(Fornecedor fornecedor) {
+    public Seller adicionandoFornecedor(Seller seller) {
 
-        Optional<Fornecedor> fornecedorById=fornecedorRepository.findFornecedorById(fornecedor.getId());
+        Optional<Seller> fornecedorById=fornecedorRepository.findFornecedorById(seller.getId());
 
         if(fornecedorById.isPresent()){
             throw new IllegalStateException("Fornecedor já cadastrado");
         }
 
-        return fornecedorRepository.save(fornecedor);
+        return fornecedorRepository.save(seller);
 
     }
 }

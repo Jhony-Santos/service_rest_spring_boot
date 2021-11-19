@@ -1,15 +1,11 @@
 package com.example.E_Commerce.model;
 
-import com.example.E_Commerce.model.Endereco;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente {
+public class Client {
 
     @Id
     @GeneratedValue
@@ -21,16 +17,16 @@ public class Cliente {
     private String email;
 
     @Embedded
-    private Endereco endereco;
+    private Adress adress;
 
-    public Cliente(){}
+    public Client(){}
 
-    public Cliente(String cpf, String nome, String telefone, String email, Endereco endereco) {
+    public Client(String cpf, String nome, String telefone, String email, Adress adress) {
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
-        this.endereco = endereco;
+        this.adress = adress;
     }
 
 
@@ -66,12 +62,12 @@ public class Cliente {
         this.email = email;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Adress getEndereco() {
+        return adress;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setEndereco(Adress adress) {
+        this.adress = adress;
     }
     public void setId(){
         this.id=id;
@@ -85,8 +81,8 @@ public class Cliente {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return cpf.equals(cliente.cpf);
+        Client client = (Client) o;
+        return cpf.equals(client.cpf);
     }
 
     @Override

@@ -1,20 +1,15 @@
 package com.example.E_Commerce.model;
 
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name="produto")
-public class Produto {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,7 +46,7 @@ public class Produto {
     private String permalink;
 
     @Embedded
-    private Endereco endereco;
+    private Adress adress;
 
     public Long getId() {
         return id;
@@ -183,12 +178,12 @@ public class Produto {
         this.permalink = permalink;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Adress getEndereco() {
+        return adress;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setEndereco(Adress adress) {
+        this.adress = adress;
     }
 }
 

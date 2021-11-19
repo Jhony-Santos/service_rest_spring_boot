@@ -1,7 +1,5 @@
 package com.example.E_Commerce.model;
 
-import com.example.E_Commerce.dto.VendaDTO;
-
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name="venda")
-public class Venda {
+public class Sale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +17,7 @@ public class Venda {
 
     @ManyToOne
     @JoinColumn(name = "cliente")
-    private Cliente cliente;
+    private Client client;
 
     private boolean status;
 
@@ -27,13 +25,13 @@ public class Venda {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "venda", fetch = FetchType.EAGER)
     private List<ItemsVenda> itemsVendas=new ArrayList<>();
 
-    public Venda(){
+    public Sale(){
 
     }
 
-    public Venda(Long id, Cliente cliente, List<ItemsVenda> itemsVendas,boolean status) {
+    public Sale(Long id, Client client, List<ItemsVenda> itemsVendas, boolean status) {
         this.id = id;
-        this.cliente = cliente;
+        this.client = client;
         this.itemsVendas = itemsVendas;
         this.status=status;
     }
@@ -47,12 +45,12 @@ public class Venda {
         this.id = id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Client getCliente() {
+        return client;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(Client client) {
+        this.client = client;
     }
 
     public List<ItemsVenda> getItemsVendas() {
@@ -83,7 +81,7 @@ public class Venda {
     public String toString() {
         return "Venda{" +
                 "id=" + id +
-                ", cliente=" + cliente +
+                ", cliente=" + client +
                 ", itemsVendas=" + itemsVendas +
                 '}';
     }
@@ -92,8 +90,8 @@ public class Venda {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Venda venda = (Venda) o;
-        return id.equals(venda.id);
+        Sale sale = (Sale) o;
+        return id.equals(sale.id);
     }
 
     @Override

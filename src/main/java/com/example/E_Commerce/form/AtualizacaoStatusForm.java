@@ -1,6 +1,6 @@
 package com.example.E_Commerce.form;
 
-import com.example.E_Commerce.model.Venda;
+import com.example.E_Commerce.model.Sale;
 import com.example.E_Commerce.repository.VendaRepository;
 
 public class AtualizacaoStatusForm {
@@ -16,11 +16,11 @@ public class AtualizacaoStatusForm {
 		this.status = status;
 	}
 
-	public Venda atualizar(Long id, VendaRepository vendaRepository) {
-		Venda venda = vendaRepository.getOne(id);
-		venda.setStatus(this.status);
+	public Sale atualizar(Long id, VendaRepository vendaRepository) {
+		Sale sale = vendaRepository.getOne(id);
+		sale.setStatus(this.status);
 
-		return venda;
+		return sale;
 	}
 
 }

@@ -1,7 +1,7 @@
 package com.example.E_Commerce.service;
 
 
-import com.example.E_Commerce.model.Estoque;
+import com.example.E_Commerce.model.Stock;
 import com.example.E_Commerce.repository.EstoqueRepository;
 import com.example.E_Commerce.repository.ProdutoRepository;
 import org.springframework.beans.BeanUtils;
@@ -23,40 +23,40 @@ public class EstoqueService {
     private ProdutoRepository produtoRepository;
 
 
-    public Estoque update(Long id, Estoque estoque){
+    public Stock update(Long id, Stock stock){
 
-        Optional<Estoque> verificarEstoque=estoqueRepository.findById(id);
+        Optional<Stock> verificarEstoque=estoqueRepository.findById(id);
 
         if(verificarEstoque.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Estoque estoqueSalvo=verificarEstoque.get();
-        BeanUtils.copyProperties(estoque, estoqueSalvo, "id");
+        Stock stockSalvo =verificarEstoque.get();
+        BeanUtils.copyProperties(stock, stockSalvo, "id");
 
-        return estoqueRepository.save(estoqueSalvo);
+        return estoqueRepository.save(stockSalvo);
     }
 
-    public ResponseEntity<Estoque> findEstoqueById(@PathVariable Long id){
-        Optional<Estoque> estoque = estoqueRepository.findById(id);
+    public ResponseEntity<Stock> findEstoqueById(@PathVariable Long id){
+        Optional<Stock> estoque = estoqueRepository.findById(id);
 
         return estoque.isPresent() ? ResponseEntity.ok(estoque.get()): ResponseEntity.notFound().build();
 
     }
 
 
-    public Estoque atualizarValor(Long id, Estoque estoque, double valor){
-        Optional<Estoque> verificarEstoque=estoqueRepository.findById(id);
+    public Stock atualizarValor(Long id, Stock stock, double valor){
+        Optional<Stock> verificarEstoque=estoqueRepository.findById(id);
 
         if(verificarEstoque.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Estoque estoqueSalvo=verificarEstoque.get();
-        estoqueSalvo.setValor(valor);
-        BeanUtils.copyProperties(estoque, estoqueSalvo, "id");
+        Stock stockSalvo =verificarEstoque.get();
+        stockSalvo.setValor(valor);
+        BeanUtils.copyProperties(stock, stockSalvo, "id");
 
-        return estoqueRepository.save(estoqueSalvo);
+        return estoqueRepository.save(stockSalvo);
     }
 
 }

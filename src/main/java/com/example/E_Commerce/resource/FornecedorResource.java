@@ -1,7 +1,7 @@
 package com.example.E_Commerce.resource;
 
 
-import com.example.E_Commerce.model.Fornecedor;
+import com.example.E_Commerce.model.Seller;
 import com.example.E_Commerce.repository.FornecedorRepository;
 import com.example.E_Commerce.service.FornecedorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 //@PreAuthorize("hasRole('ROLE_LOJA')")
@@ -34,20 +33,20 @@ public class FornecedorResource {
     }
 
     @GetMapping()
-    public List<Fornecedor> getFornecedores(){
+    public List<Seller> getFornecedores(){
         return fornecedorService.getFornecedores();
     }
 
     @PostMapping("/create")
-    public void registrandoFornecedor(@RequestBody Fornecedor fornecedor){
-         fornecedorService.adicionandoFornecedor(fornecedor);
+    public void registrandoFornecedor(@RequestBody Seller seller){
+         fornecedorService.adicionandoFornecedor(seller);
     }
 
 
     @PutMapping("update/{id}")
-    public ResponseEntity<Fornecedor> update(@PathVariable Long id, @RequestBody Fornecedor fornecedor){
-        Fornecedor fornecedorSave=fornecedorService.update(id,fornecedor);
-        return ResponseEntity.ok(fornecedorSave);
+    public ResponseEntity<Seller> update(@PathVariable Long id, @RequestBody Seller seller){
+        Seller sellerSave =fornecedorService.update(id, seller);
+        return ResponseEntity.ok(sellerSave);
     }
 
 

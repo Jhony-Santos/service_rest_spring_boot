@@ -1,5 +1,4 @@
 package com.example.E_Commerce.model;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -8,7 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "fornecedor")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Fornecedor {
+public class Seller {
 
     @Id
     @GeneratedValue
@@ -20,19 +19,19 @@ public class Fornecedor {
     private String email;
 
     @Embedded
-    private Endereco endereco;
+    private Adress adress;
 
     public Long getId() {
         return id;
     }
-    public Fornecedor(){}
+    public Seller(){}
 
-    public Fornecedor(String cnpj, String nome, String telefone, String email, Endereco endereco) {
+    public Seller(String cnpj, String nome, String telefone, String email, Adress adress) {
         this.cnpj = cnpj;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
-        this.endereco = endereco;
+        this.adress = adress;
     }
 
     public void setId(Long id) {
@@ -71,19 +70,19 @@ public class Fornecedor {
         this.email = email;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Adress getEndereco() {
+        return adress;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setEndereco(Adress adress) {
+        this.adress = adress;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Fornecedor that = (Fornecedor) o;
+        Seller that = (Seller) o;
         return cnpj.equals(that.cnpj);
     }
 
@@ -100,7 +99,7 @@ public class Fornecedor {
                 ", nome='" + nome + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", email='" + email + '\'' +
-                ", endereco=" + endereco +
+                ", endereco=" + adress +
                 '}';
     }
 }

@@ -15,11 +15,11 @@ public class ItemsVenda {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name="codigo_venda")
-    private Venda venda;
+    private Sale sale;
 
     @ManyToOne
     @JoinColumn(name="codigo_produto")
-    private Produto produto;
+    private Product product;
 
 
     private Integer quantidade;
@@ -34,12 +34,12 @@ public class ItemsVenda {
         this.id = id;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public Product getProduto() {
+        return product;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setProduto(Product product) {
+        this.product = product;
     }
 
     public Integer getQuantidade() {
@@ -58,11 +58,11 @@ public class ItemsVenda {
         this.valor = valor;
     }
 
-    public Venda getVenda() {
-        return venda;
+    public Sale getVenda() {
+        return sale;
     }
 
-    public void setVenda(Venda venda) {
-        this.venda = venda;
+    public void setVenda(Sale sale) {
+        this.sale = sale;
     }
 }

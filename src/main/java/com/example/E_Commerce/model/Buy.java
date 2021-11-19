@@ -1,7 +1,5 @@
 package com.example.E_Commerce.model;
 
-import com.example.E_Commerce.dto.CompraDTO;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name="compra")
-public class Compra {
+public class Buy {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -17,21 +15,20 @@ public class Compra {
 
 
     @ManyToOne
-    @JoinColumn(name = "fornecedor")
-    private Fornecedor fornecedor;
+    @JoinColumn(name = "seller")
+    private Seller seller;
 
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "compra", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "buy", fetch = FetchType.EAGER)
     private List<ItemsCompra> itemsCompra = new ArrayList<>();
 
 
-
-    public Compra() {
+    public Buy() {
     }
 
-    public Compra(Long id, Fornecedor fornecedor, List<ItemsCompra> itemsCompra) {
+    public Buy(Long id, Seller seller, List<ItemsCompra> itemsCompra) {
         this.id = id;
-        this.fornecedor = fornecedor;
+        this.seller = seller;
         this.itemsCompra=itemsCompra;
     }
 
@@ -45,12 +42,12 @@ public class Compra {
         this.id = id;
     }
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
+    public Seller getSeller() {
+        return seller;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
 
     public List<ItemsCompra> getItemsCompra() {
@@ -65,7 +62,7 @@ public class Compra {
     public String toString() {
         return "Compra{" +
                 "id=" + id +
-                ", fornecedor=" + fornecedor +
+                ", fornecedor=" + seller +
                  +
                 '}';
     }
@@ -83,8 +80,8 @@ public class Compra {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Compra compra = (Compra) o;
-        return id.equals(compra.id);
+        Buy buy = (Buy) o;
+        return id.equals(buy.id);
     }
 
     @Override

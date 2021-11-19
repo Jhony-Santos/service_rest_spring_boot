@@ -1,13 +1,13 @@
 package com.example.E_Commerce.repository;
 
-import com.example.E_Commerce.model.Fornecedor;
+import com.example.E_Commerce.model.Seller;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface FornecedorRepository extends JpaRepository<Fornecedor,Long> {
+public interface FornecedorRepository extends JpaRepository<Seller,Long> {
 
-    Optional<Fornecedor> findFornecedorById(Long id);
+    Optional<Seller> findFornecedorById(Long id);
 }

@@ -1,6 +1,6 @@
 package com.example.E_Commerce.dto;
 
-public class ItemVendaDTO {
+public class ItemSaleDTO {
 
     Long id_produto;
     Double valor;
