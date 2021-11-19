@@ -51,7 +51,7 @@ public class FornecedorResource {
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remove(@PathVariable Long id){
         fornecedorRepository.deleteById(id);
