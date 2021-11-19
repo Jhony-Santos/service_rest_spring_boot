@@ -9,11 +9,11 @@ public class PostClientDTO {
 
     List<Client> clients = new ArrayList<>();
 
-    public List<Client> getClientes() {
+    public List<Client> getClients() {
         return clients;
     }
 
-    public void setClientes(List<Client> clients) {
+    public void setClients(List<Client> clients) {
         this.clients = clients;
     }
 }

@@ -48,8 +48,8 @@ public class ProdutoResource {
 
         for(Stock i: estoqueRepository.findAll()){
 
-            if(i.getQuantidade() > 0 && i.getValor() > 0 ){ // caminho feliz
-                    listaProducts.add(i.getProduto());
+            if(i.getQuantity() > 0 && i.getValor() > 0 ){ // caminho feliz
+                    listaProducts.add(i.getProduct());
 
             }
         }
@@ -64,8 +64,8 @@ public class ProdutoResource {
 
         Stock stock = new Stock();
         stock.setValor(0.00);
-        stock.setQuantidade(0);
-        stock.setProduto(productSalvo);
+        stock.setQuantity(0);
+        stock.setProduct(productSalvo);
         estoqueRepository.save(stock);
 
         publisher.publishEvent(new EventoGenerico(this,response, productSalvo.getId()));

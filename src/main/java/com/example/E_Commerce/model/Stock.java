@@ -14,11 +14,11 @@ public class Stock {
 
 
     @OneToOne(fetch= FetchType.EAGER) // pega produto automaticamente, mapeamento do banco
-    @JoinColumn(name="codigo_produto") // id de produto, cada produto tem um estoque
+    @JoinColumn(name="id") // id de produto, cada produto tem um estoque
     private Product product;
 
-    private Integer quantidade;
-    private Double valor;
+    private Integer quantity;
+    private Double price;
 
 
     public Long getId() {
@@ -29,28 +29,28 @@ public class Stock {
         this.id = id;
     }
 
-    public Product getProduto() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduto(Product product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public Double getValor() {
-        return valor;
+        return price;
     }
 
     public void setValor(Double valor) {
-        this.valor = valor;
+        this.price = valor;
     }
 
     @Override
@@ -58,8 +58,8 @@ public class Stock {
         return "Estoque{" +
                 "id=" + id +
                 ", produto=" + product +
-                ", quantidade=" + quantidade +
-                ", valor=" + valor +
+                ", quantidade=" + quantity +
+                ", valor=" + price +
                 '}';
     }
 

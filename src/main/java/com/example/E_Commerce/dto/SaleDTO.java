@@ -4,16 +4,16 @@ import java.util.List;
 
 public class SaleDTO {
 
-    Long id_cliente;
+    Long id_client;
     List<ItemSaleDTO> items;
 
 
-    public Long getId_cliente() {
-        return id_cliente;
+    public Long getId_client() {
+        return id_client;
     }
 
-    public void setId_cliente(Long id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setId_client(Long id_cliente) {
+        this.id_client = id_client;
     }
 
     public List<ItemSaleDTO> getItems() {

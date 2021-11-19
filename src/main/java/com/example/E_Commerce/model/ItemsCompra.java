@@ -22,8 +22,8 @@ public class ItemsCompra {
     @JoinColumn(name="codigo_produto")
     private Product product;
 
-    private Integer quantidade;
-    private Double valor;
+    private Integer quantity;
+    private Double price;
 
     public Long getId() {
         return id;
@@ -33,35 +33,35 @@ public class ItemsCompra {
         this.id = id;
     }
 
-    public Buy getCompra() {
+    public Buy getBuy() {
         return buy;
     }
 
-    public void setCompra(Buy buy) {
+    public void setBuy(Buy buy) {
         this.buy = buy;
     }
 
-    public Product getProduto() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduto(Product product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantity(Integer quantidade) {
+        this.quantity = quantity;
     }
 
-    public Double getValor() {
-        return valor;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

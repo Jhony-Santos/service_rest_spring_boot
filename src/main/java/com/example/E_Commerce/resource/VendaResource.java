@@ -66,7 +66,7 @@ public class VendaResource {
 
             Sale saleSalva = new Sale();
 
-        Client client = clienteRepository.findById(venda.getId_cliente()).get(); // verificando a existência do cliente
+        Client client = clienteRepository.findById(venda.getId_client()).get(); // verificando a existência do cliente
         saleSalva.setCliente(client);
         saleSalva.setStatus(false);
 
@@ -78,8 +78,8 @@ public class VendaResource {
             Product product = produtoRepository.findById(i.getId_produto()).get(); // verificando a existência do produto
             Stock stock =estoqueRepository.findByProduto(product);// verifico se o produto possui estoque
 
-            int quantidade_produto_estoque=estoqueRepository.findByProduto(stock.getProduto()).getQuantidade();
-            double valor_venda_produto=estoqueRepository.findByProduto(stock.getProduto()).getValor();
+            int quantidade_produto_estoque=estoqueRepository.findByProduto(stock.getProduct()).getQuantity();
+            double valor_venda_produto=estoqueRepository.findByProduto(stock.getProduct()).getValor();
 
             if(product !=null && quantidade_produto_estoque > 0 && valor_venda_produto > 0){ // caminho feliz
 
@@ -89,13 +89,13 @@ public class VendaResource {
 
                     // SALVAR ITEMS NA LISTA DE VENDAS
                     itemsVenda.setProduto(product);
-                    itemsVenda.setQuantidade(cont.getQuantidade());
-                    itemsVenda.setValor(cont.getValor());
+                    itemsVenda.setQuantidade(cont.getQuantity());
+                    itemsVenda.setValor(cont.getPrice());
                     itemsVenda.setVenda(saleSalva);
                     saleSalva.addItem(itemsVenda);
 
-                    stock.getProduto();
-                    stock.setQuantidade(stock.getQuantidade() - i.getQuantidade());
+                    stock.getProduct();
+                    stock.setQuantity(stock.getQuantity() - i.getQuantity());
                     stock.getValor();
 
                 estoqueRepository.save(stock);

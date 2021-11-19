@@ -12,8 +12,8 @@ public class Client {
     private Long id;
     @Column(unique = true)
     private String cpf;
-    private String nome;
-    private String telefone;
+    private String name;
+    private String telephone;
     private String email;
 
     @Embedded
@@ -21,10 +21,10 @@ public class Client {
 
     public Client(){}
 
-    public Client(String cpf, String nome, String telefone, String email, Adress adress) {
+    public Client(String cpf, String nome, String telephone, String email, Adress adress) {
         this.cpf = cpf;
-        this.nome = nome;
-        this.telefone = telefone;
+        this.name = nome;
+        this.telephone = telephone;
         this.email = email;
         this.adress = adress;
     }
@@ -38,20 +38,20 @@ public class Client {
         this.cpf = cpf;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.name = nome;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getEmail() {
@@ -62,7 +62,7 @@ public class Client {
         this.email = email;
     }
 
-    public Adress getEndereco() {
+    public Adress getAdress() {
         return adress;
     }
 

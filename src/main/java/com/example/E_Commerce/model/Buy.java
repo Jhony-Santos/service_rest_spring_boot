@@ -60,9 +60,9 @@ public class Buy {
 
     @Override
     public String toString() {
-        return "Compra{" +
+        return "Buy{" +
                 "id=" + id +
-                ", fornecedor=" + seller +
+                ", Seller=" + seller +
                  +
                 '}';
     }

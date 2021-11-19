@@ -4,15 +4,15 @@ import java.util.List;
 
 public class BuyDTO {
 
-    Long id_fornecedor;
+    Long id_seller;
     List<ItemBuyDTO> items;
 
-    public Long getId_fornecedor() {
-        return id_fornecedor;
+    public Long getId_seller() {
+        return id_seller;
     }
 
-    public void setId_fornecedor(Long id_fornecedor) {
-        this.id_fornecedor = id_fornecedor;
+    public void setId_seller(Long id_fornecedor) {
+        this.id_seller = id_seller;
     }
 
     public List<ItemBuyDTO> getItems() {

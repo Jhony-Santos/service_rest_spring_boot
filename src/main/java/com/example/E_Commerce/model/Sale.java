@@ -79,9 +79,9 @@ public class Sale {
 
     @Override
     public String toString() {
-        return "Venda{" +
+        return "Buy{" +
                 "id=" + id +
-                ", cliente=" + client +
+                ", Client=" + client +
                 ", itemsVendas=" + itemsVendas +
                 '}';
     }

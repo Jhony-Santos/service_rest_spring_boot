@@ -13,11 +13,11 @@ public class PostSellerDTO {
 
     List<Seller> seller = new ArrayList<>();
 
-    public List<Seller> getFornecedor() {
+    public List<Seller> getSeller() {
         return seller;
     }
 
-    public void setFornecedor(List<Seller> seller) {
+    public void setSeller(List<Seller> seller) {
         this.seller = seller;
     }
 }

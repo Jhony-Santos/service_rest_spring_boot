@@ -14,8 +14,8 @@ public class Seller {
     private Long id;
     @Column(unique = true)
     private String cnpj;
-    private String nome;
-    private String telefone;
+    private String name;
+    private String telephone;
     private String email;
 
     @Embedded
@@ -26,10 +26,10 @@ public class Seller {
     }
     public Seller(){}
 
-    public Seller(String cnpj, String nome, String telefone, String email, Adress adress) {
+    public Seller(String cnpj, String name, String telephone, String email, Adress adress) {
         this.cnpj = cnpj;
-        this.nome = nome;
-        this.telefone = telefone;
+        this.name = name;
+        this.telephone = telephone;
         this.email = email;
         this.adress = adress;
     }
@@ -46,20 +46,20 @@ public class Seller {
         this.cnpj = cnpj;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String nome) {
+        this.name = nome;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void settelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getEmail() {
@@ -70,11 +70,11 @@ public class Seller {
         this.email = email;
     }
 
-    public Adress getEndereco() {
+    public Adress getAdress() {
         return adress;
     }
 
-    public void setEndereco(Adress adress) {
+    public void setAdress(Adress adress) {
         this.adress = adress;
     }
 
@@ -96,10 +96,10 @@ public class Seller {
         return "Fornecedor{" +
                 "id=" + id +
                 ", cnpj='" + cnpj + '\'' +
-                ", nome='" + nome + '\'' +
-                ", telefone='" + telefone + '\'' +
+                ", name='" + name + '\'' +
+                ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
-                ", endereco=" + adress +
+                ", adress=" + adress +
                 '}';
     }
 }

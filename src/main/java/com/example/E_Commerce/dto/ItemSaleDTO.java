@@ -2,32 +2,32 @@ package com.example.E_Commerce.dto;
 
 public class ItemSaleDTO {
 
-    Long id_produto;
-    Double valor;
-    Integer quantidade;
+    Long id_product;
+    Double price;
+    Integer quantity;
 
 
     public Long getId_produto() {
-        return id_produto;
+        return id_product;
     }
 
-    public void setId_produto(Long id_produto) {
-        this.id_produto = id_produto;
+    public void setId_product(Long id_produto) {
+        this.id_product = id_produto;
     }
 
-    public Double getValor() {
-        return valor;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setValor(Double price) {
+        this.price = price;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
