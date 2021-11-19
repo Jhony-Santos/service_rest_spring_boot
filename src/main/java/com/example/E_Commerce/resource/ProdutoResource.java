@@ -71,7 +71,7 @@ public class ProdutoResource {
         estoque.setProduto(produtoSalvo);
         estoqueRepository.save(estoque);
 
-        publisher.publishEvent(new EventoGenerico(this,response, produtoSalvo.getCodigo()));
+        publisher.publishEvent(new EventoGenerico(this,response, produtoSalvo.getId()));
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoSalvo);
     }
 

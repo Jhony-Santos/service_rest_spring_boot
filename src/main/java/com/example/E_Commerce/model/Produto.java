@@ -1,8 +1,15 @@
 package com.example.E_Commerce.model;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -11,58 +18,177 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigo;
+    private Long id;
 
-    private String nome;
+    private String site_id;
 
-    private String descricao;
+    private String title;
 
-    private String unidade;
+    private String subtitile;
 
+    private Long id_integracao;
 
-    public Long getCodigo() {
-        return codigo;
+    private Long seller_id;
+
+    private double price;
+
+    private double base_price;
+
+    private double original_price;
+
+    private String currency_id;
+
+    private int initial_quantity;
+
+    private int avaliable_quantity;
+
+    private String start_time;
+
+    private String stop_time;
+
+    private String condition;
+
+    private String permalink;
+
+    @Embedded
+    private Endereco endereco;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getSite_id() {
+        return site_id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setSite_id(String site_id) {
+        this.site_id = site_id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getTitle() {
+        return title;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getUnidade() {
-        return unidade;
+    public String getSubtitile() {
+        return subtitile;
     }
 
-    public void setUnidade(String unidade) {
-        this.unidade = unidade;
+    public void setSubtitile(String subtitile) {
+        this.subtitile = subtitile;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Produto produto = (Produto) o;
-        return codigo.equals(produto.codigo);
+    public Long getId_integracao() {
+        return id_integracao;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(codigo);
+    public void setId_integracao(Long id_integracao) {
+        this.id_integracao = id_integracao;
+    }
+
+    public Long getSeller_id() {
+        return seller_id;
+    }
+
+    public void setSeller_id(Long seller_id) {
+        this.seller_id = seller_id;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getBase_price() {
+        return base_price;
+    }
+
+    public void setBase_price(double base_price) {
+        this.base_price = base_price;
+    }
+
+    public double getOriginal_price() {
+        return original_price;
+    }
+
+    public void setOriginal_price(double original_price) {
+        this.original_price = original_price;
+    }
+
+    public String getCurrency_id() {
+        return currency_id;
+    }
+
+    public void setCurrency_id(String currency_id) {
+        this.currency_id = currency_id;
+    }
+
+    public int getInitial_quantity() {
+        return initial_quantity;
+    }
+
+    public void setInitial_quantity(int initial_quantity) {
+        this.initial_quantity = initial_quantity;
+    }
+
+    public int getAvaliable_quantity() {
+        return avaliable_quantity;
+    }
+
+    public void setAvaliable_quantity(int avaliable_quantity) {
+        this.avaliable_quantity = avaliable_quantity;
+    }
+
+    public String getStart_time() {
+        DateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date start_time=new Date();
+        return dateFormat.format(start_time);
+    }
+
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
+    }
+
+    public String getStop_time() {
+        return stop_time;
+    }
+
+    public void setStop_time(String stop_time) {
+        this.stop_time = stop_time;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public String getPermalink() {
+        return permalink;
+    }
+
+    public void setPermalink(String permalink) {
+        this.permalink = permalink;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }
 
