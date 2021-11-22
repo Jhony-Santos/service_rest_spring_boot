@@ -22,17 +22,17 @@ public class Sale {
     private boolean status;
 
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "venda", fetch = FetchType.EAGER)
-    private List<ItemsVenda> itemsVendas=new ArrayList<>();
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "sale", fetch = FetchType.EAGER)
+    private List<ItemsSell> itemsSells =new ArrayList<>();
 
     public Sale(){
 
     }
 
-    public Sale(Long id, Client client, List<ItemsVenda> itemsVendas, boolean status) {
+    public Sale(Long id, Client client, List<ItemsSell> itemsSells, boolean status) {
         this.id = id;
         this.client = client;
-        this.itemsVendas = itemsVendas;
+        this.itemsSells = itemsSells;
         this.status=status;
     }
 
@@ -53,20 +53,20 @@ public class Sale {
         this.client = client;
     }
 
-    public List<ItemsVenda> getItemsVendas() {
-        return itemsVendas;
+    public List<ItemsSell> getItemsVendas() {
+        return itemsSells;
     }
 
-    public void setItemsVendas(List<ItemsVenda> itemsVendas) {
-        this.itemsVendas = itemsVendas;
+    public void setItemsVendas(List<ItemsSell> itemsSells) {
+        this.itemsSells = itemsSells;
     }
 
-    public void addItem(ItemsVenda itemsVenda){
-        this.itemsVendas.add(itemsVenda);
+    public void addItem(ItemsSell itemsSell){
+        this.itemsSells.add(itemsSell);
     }
 
-    public void removeItem(ItemsVenda itemsVenda){
-        this.itemsVendas.add(itemsVenda);
+    public void removeItem(ItemsSell itemsSell){
+        this.itemsSells.add(itemsSell);
     }
 
     public boolean isStatus() {
@@ -82,7 +82,7 @@ public class Sale {
         return "Buy{" +
                 "id=" + id +
                 ", Client=" + client +
-                ", itemsVendas=" + itemsVendas +
+                ", itemsVendas=" + itemsSells +
                 '}';
     }
 
@@ -99,3 +99,4 @@ public class Sale {
         return Objects.hash(id);
     }
 }
+
