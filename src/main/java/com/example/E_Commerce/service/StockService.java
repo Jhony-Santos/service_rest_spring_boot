@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Optional;
 
 @Service
-public class EstoqueService {
+public class StockService {
 
     @Autowired
     private StockRepository stockRepository;
@@ -60,3 +60,5 @@ public class EstoqueService {
     }
 
 }
+
+
