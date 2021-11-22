@@ -19,19 +19,19 @@ public class Seller {
     private String email;
 
     @Embedded
-    private Adress adress;
+    private Address address;
 
     public Long getId() {
         return id;
     }
     public Seller(){}
 
-    public Seller(String cnpj, String name, String telephone, String email, Adress adress) {
+    public Seller(String cnpj, String name, String telephone, String email, Address address) {
         this.cnpj = cnpj;
         this.name = name;
         this.telephone = telephone;
         this.email = email;
-        this.adress = adress;
+        this.address = address;
     }
 
     public void setId(Long id) {
@@ -70,12 +70,12 @@ public class Seller {
         this.email = email;
     }
 
-    public Adress getAdress() {
-        return adress;
+    public Address getAdress() {
+        return address;
     }
 
-    public void setAdress(Adress adress) {
-        this.adress = adress;
+    public void setAdress(Address address) {
+        this.address = address;
     }
 
     @Override
@@ -99,7 +99,7 @@ public class Seller {
                 ", name='" + name + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
-                ", adress=" + adress +
+                ", adress=" + address +
                 '}';
     }
 }
