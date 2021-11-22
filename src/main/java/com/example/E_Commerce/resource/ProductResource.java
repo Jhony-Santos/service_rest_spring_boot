@@ -5,7 +5,7 @@ import com.example.E_Commerce.model.Product;
 import com.example.E_Commerce.model.Stock;
 import com.example.E_Commerce.repository.StockRepository;
 import com.example.E_Commerce.repository.ProductRepository;
-import com.example.E_Commerce.service.ProdutoService;
+import com.example.E_Commerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -21,13 +21,13 @@ import java.util.Optional;
 @RestController
 //@PreAuthorize("hasRole('ROLE_LOJA')")
 @RequestMapping("/produto")
-public class ProdutoResource {
+public class ProductResource {
 
     @Autowired
     private ProductRepository productRepository;
 
     @Autowired
-    private ProdutoService produtoService;
+    private ProductService productService;
 
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -80,7 +80,7 @@ public class ProdutoResource {
 
     @PutMapping("/update/{codigo}")
     public ResponseEntity<Product> update(@PathVariable Long codigo, @RequestBody Product product){
-        Product productSave =produtoService.update(codigo, product);
+        Product productSave = productService.update(codigo, product);
         return ResponseEntity.ok(productSave);
     }
 
