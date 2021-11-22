@@ -11,7 +11,7 @@ public class BuyDTO {
         return id_seller;
     }
 
-    public void setId_seller(Long id_fornecedor) {
+    public void setId_seller(Long id_seller) {
         this.id_seller = id_seller;
     }
 
