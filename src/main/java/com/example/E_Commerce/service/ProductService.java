@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Optional;
 
 @Service
-public class ProdutoService {
+public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
