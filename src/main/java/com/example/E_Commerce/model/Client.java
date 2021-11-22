@@ -4,11 +4,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "client")
 public class Client {
 
     @Id
-    @GeneratedValue
     private Long id;
     @Column(unique = true)
     private String cpf;
@@ -17,16 +16,16 @@ public class Client {
     private String email;
 
     @Embedded
-    private Adress adress;
+    private Address address;
 
     public Client(){}
 
-    public Client(String cpf, String nome, String telephone, String email, Adress adress) {
+    public Client(String cpf, String nome, String telephone, String email, Address address) {
         this.cpf = cpf;
         this.name = nome;
         this.telephone = telephone;
         this.email = email;
-        this.adress = adress;
+        this.address = address;
     }
 
 
@@ -62,12 +61,12 @@ public class Client {
         this.email = email;
     }
 
-    public Adress getAdress() {
-        return adress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setEndereco(Adress adress) {
-        this.adress = adress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
     public void setId(){
         this.id=id;
