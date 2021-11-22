@@ -5,21 +5,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Table(name="items_compra")
-public class ItemsCompra {
+@Table(name="itemsBuy")
+public class ItemsBuy {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="codigo_compra")
+    @JoinColumn(name="buy")
     private Buy buy;
     
 
     @ManyToOne
-    @JoinColumn(name="codigo_produto")
+    @JoinColumn(name="product")
     private Product product;
 
     private Integer quantity;
@@ -65,3 +64,5 @@ public class ItemsCompra {
         this.price = price;
     }
 }
+
+
