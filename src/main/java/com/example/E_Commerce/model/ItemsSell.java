@@ -6,19 +6,18 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="items_venda")
-public class ItemsVenda {
+public class ItemsSell {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="codigo_venda")
+    @JoinColumn(name="sale")
     private Sale sale;
 
     @ManyToOne
-    @JoinColumn(name="codigo_produto")
+    @JoinColumn(name="product")
     private Product product;
 
 
