@@ -13,15 +13,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClienteService {
+public class ClientService {
 
     @Autowired
     private ClientRepository clientRepository;
 
     @Autowired
-    private ClienteService clienteService;
+    private ClientService clientService;
 
-    public ClienteService(ClientRepository clientRepository){
+    public ClientService(ClientRepository clientRepository){
         this.clientRepository = clientRepository;
     }
 
