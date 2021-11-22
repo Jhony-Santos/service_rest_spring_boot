@@ -2,7 +2,7 @@ package com.example.E_Commerce.resource;
 
 import com.example.E_Commerce.model.Stock;
 import com.example.E_Commerce.repository.StockRepository;
-import com.example.E_Commerce.service.EstoqueService;
+import com.example.E_Commerce.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -17,10 +17,10 @@ import java.util.Optional;
 @RestController
 //@PreAuthorize("hasRole('ROLE_LOJA')")
 @RequestMapping("/estoque")
-public class EstoqueResource {
+public class StockResource {
 
     @Autowired
-    private EstoqueService estoqueService;
+    private StockService stockService;
 
     @Autowired
     private StockRepository stockRepository;
@@ -54,13 +54,13 @@ public class EstoqueResource {
 
     @PutMapping("/update/{id}")    // UPDATE
     public ResponseEntity<Stock> update(@PathVariable Long id, @RequestBody Stock stock){
-        Stock stockSave =estoqueService.update(id, stock);
+        Stock stockSave = stockService.update(id, stock);
         return ResponseEntity.ok(stockSave);
     }
 
     @PutMapping("/update/{valor}")
     public ResponseEntity<Stock> atualizarValor(@PathVariable Long id, @PathVariable double valor, @RequestBody Stock stock){
-        Stock stockSave =estoqueService.atualizarValor(id, stock,valor);
+        Stock stockSave = stockService.atualizarValor(id, stock,valor);
         return ResponseEntity.ok(stockSave);
     }
 
