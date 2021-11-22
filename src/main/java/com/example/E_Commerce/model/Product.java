@@ -6,20 +6,45 @@ import java.text.SimpleDateFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
-@Table(name="produto")
+@Table(name="product")
 public class Product {
 
+    public Product(Long id, String site_id, String title, String subtitle, Long id_integracao, Long seller_id, double price, double base_price, double original_price, String currency_id, int initial_quantity, int avaliable_quantity, String start_time, String stop_time, String condition, String permalink, Address address) {
+        this.id = id;
+        this.site_id = site_id;
+        this.title = title;
+        this.subtitle = subtitle;
+        this.id_integracao = id_integracao;
+        this.seller_id = seller_id;
+        this.price = price;
+        this.base_price = base_price;
+        this.original_price = original_price;
+        this.currency_id = currency_id;
+        this.initial_quantity = initial_quantity;
+        this.avaliable_quantity = avaliable_quantity;
+        this.start_time = start_time;
+        this.stop_time = stop_time;
+        this.condition = condition;
+        this.permalink = permalink;
+        this.address = address;
+    }
+
+    public Product() {
+
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     private String site_id;
 
     private String title;
 
-    private String subtitile;
+    private String subtitle;
 
     private Long id_integracao;
 
@@ -41,16 +66,18 @@ public class Product {
 
     private String stop_time;
 
+    @Column(name = "condicao")
     private String condition;
 
     private String permalink;
 
-    @Embedded
-    private Brand brand;
+    /*@Embedded
+    private Brand brand;*/
 
 
     @Embedded
-    private Adress adress;
+    private Address address;
+
 
     public Long getId() {
         return id;
@@ -76,12 +103,12 @@ public class Product {
         this.title = title;
     }
 
-    public String getSubtitile() {
-        return subtitile;
+    public String getSubtitle() {
+        return subtitle;
     }
 
-    public void setSubtitile(String subtitile) {
-        this.subtitile = subtitile;
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
     }
 
     public Long getId_integracao() {
@@ -182,12 +209,33 @@ public class Product {
         this.permalink = permalink;
     }
 
-    public Adress getEndereco() {
-        return adress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setEndereco(Adress adress) {
-        this.adress = adress;
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    /*public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id.equals(product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
 
