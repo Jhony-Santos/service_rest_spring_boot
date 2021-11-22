@@ -14,13 +14,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FornecedorService {
+public class SellerService {
 
     @Autowired
     private SellerRepository sellerRepository;
 
 
-    public FornecedorService(SellerRepository sellerRepository) {
+    public SellerService(SellerRepository sellerRepository) {
         this.sellerRepository = sellerRepository;
     }
 
@@ -31,7 +31,7 @@ public class FornecedorService {
 
    public Seller update(Long id, Seller seller){
 
-        Optional<Seller> verificarFornecedor= sellerRepository.findFornecedorById(id);
+        Optional<Seller> verificarFornecedor= sellerRepository.findSellerById(id);
 
 
         if(verificarFornecedor.isEmpty()){
@@ -53,7 +53,7 @@ public class FornecedorService {
 
     public Seller adicionandoFornecedor(Seller seller) {
 
-        Optional<Seller> fornecedorById= sellerRepository.findFornecedorById(seller.getId());
+        Optional<Seller> fornecedorById= sellerRepository.findById(seller.getId());
 
         if(fornecedorById.isPresent()){
             throw new IllegalStateException("Fornecedor já cadastrado");
@@ -63,3 +63,5 @@ public class FornecedorService {
 
     }
 }
+
+
