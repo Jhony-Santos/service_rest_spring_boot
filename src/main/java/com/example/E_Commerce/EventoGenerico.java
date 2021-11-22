@@ -1,8 +1,7 @@
 package com.example.E_Commerce;
 
 /*import com.example.E_Commerce.resource.CompraResource;*/
-import com.example.E_Commerce.resource.FornecedorResource;
-import com.example.E_Commerce.resource.VendaResource;
+/*import com.example.E_Commerce.resource.SaleResource;*/
 import org.springframework.context.ApplicationEvent;
 
 import javax.servlet.http.HttpServletResponse;
@@ -42,11 +41,11 @@ public class EventoGenerico extends ApplicationEvent {
     }*/
 
     // PARA VENDA
-    public EventoGenerico(VendaResource vendaResource, HttpServletResponse response, Long id_venda) {
-        super(vendaResource);
+   /* public EventoGenerico(SaleResource saleResource, HttpServletResponse response, Long id_venda) {
+        super(saleResource);
         this.response=response;
         this.id_venda=id_venda;
-    }
+    }*/
 
     public HttpServletResponse getResponse() {
         return response;
