@@ -3,7 +3,7 @@ package com.example.E_Commerce.resource;
 
 import com.example.E_Commerce.model.Client;
 import com.example.E_Commerce.repository.ClientRepository;
-import com.example.E_Commerce.service.ClienteService;
+import com.example.E_Commerce.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ import java.util.Optional;
 @RestController
 //@PreAuthorize("hasRole('ROLE_LOJA')")
 @RequestMapping("/cliente")
-public class ClienteResource {
+public class ClientResource {
 
     @Autowired
     private ClientRepository clientRepository;
@@ -26,17 +26,17 @@ public class ClienteResource {
     private ApplicationEventPublisher publisher;
 
     @Autowired
-    private ClienteService clienteService;
+    private ClientService clientService;
 
     @GetMapping
     public List<Client> getClientes() {
-        return clienteService.getClientes();
+        return clientService.getClientes();
     }
 
 
     @PostMapping("/create")
     public void registrandoCliente(@RequestBody Client client){
-        clienteService.adicionandoCliente(client);
+        clientService.adicionandoCliente(client);
     }
 
 
@@ -48,7 +48,7 @@ public class ClienteResource {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Client> update(@PathVariable Long id, @RequestBody Client client) {
-        Client clientSave = clienteService.update(id, client);
+        Client clientSave = clientService.update(id, client);
         return ResponseEntity.ok(clientSave);
     }
 
