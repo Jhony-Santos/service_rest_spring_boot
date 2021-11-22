@@ -3,7 +3,7 @@ package com.example.E_Commerce.resource;
 
 import com.example.E_Commerce.model.Seller;
 import com.example.E_Commerce.repository.SellerRepository;
-import com.example.E_Commerce.service.FornecedorService;
+import com.example.E_Commerce.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -16,36 +16,36 @@ import java.util.List;
 @RestController
 //@PreAuthorize("hasRole('ROLE_LOJA')")
 @RequestMapping("/fornecedores")
-public class FornecedorResource {
+public class SellerResource {
 
     @Autowired
     private SellerRepository sellerRepository;
 
     @Autowired
-    private FornecedorService fornecedorService;
+    private SellerService sellerService;
 
     @Autowired
     private ApplicationEventPublisher publisher;
 
     @Autowired
-    public FornecedorResource(FornecedorService fornecedorService) {
-        this.fornecedorService = fornecedorService;
+    public SellerResource(SellerService sellerService) {
+        this.sellerService = sellerService;
     }
 
     @GetMapping()
     public List<Seller> getFornecedores(){
-        return fornecedorService.getFornecedores();
+        return sellerService.getFornecedores();
     }
 
     @PostMapping("/create")
     public void registrandoFornecedor(@RequestBody Seller seller){
-         fornecedorService.adicionandoFornecedor(seller);
+         sellerService.adicionandoFornecedor(seller);
     }
 
 
     @PutMapping("update/{id}")
     public ResponseEntity<Seller> update(@PathVariable Long id, @RequestBody Seller seller){
-        Seller sellerSave =fornecedorService.update(id, seller);
+        Seller sellerSave = sellerService.update(id, seller);
         return ResponseEntity.ok(sellerSave);
     }
 
