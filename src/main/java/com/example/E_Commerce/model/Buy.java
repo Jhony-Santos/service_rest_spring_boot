@@ -32,8 +32,6 @@ public class Buy {
         this.itemsBuy = itemsBuy;
     }
 
-
-
     public Long getId() {
         return id;
     }
@@ -50,11 +48,11 @@ public class Buy {
         this.seller = seller;
     }
 
-    public List<ItemsBuy> getItemsCompra() {
+    public List<ItemsBuy> getItemsBuy() {
         return itemsBuy;
     }
 
-    public void setItemsCompra(List<ItemsBuy> itemsBuy) {
+    public void setItemsBuy(List<ItemsBuy> itemsBuy) {
         this.itemsBuy = itemsBuy;
     }
 
