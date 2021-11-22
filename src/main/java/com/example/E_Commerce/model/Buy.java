@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name="compra")
+@Table(name="buy")
 public class Buy {
 
     @Id
@@ -20,16 +20,16 @@ public class Buy {
 
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "buy", fetch = FetchType.EAGER)
-    private List<ItemsCompra> itemsCompra = new ArrayList<>();
+    private List<ItemsBuy> itemsBuy = new ArrayList<>();
 
 
     public Buy() {
     }
 
-    public Buy(Long id, Seller seller, List<ItemsCompra> itemsCompra) {
+    public Buy(Long id, Seller seller, List<ItemsBuy> itemsBuy) {
         this.id = id;
         this.seller = seller;
-        this.itemsCompra=itemsCompra;
+        this.itemsBuy = itemsBuy;
     }
 
 
@@ -50,12 +50,12 @@ public class Buy {
         this.seller = seller;
     }
 
-    public List<ItemsCompra> getItemsCompra() {
-        return itemsCompra;
+    public List<ItemsBuy> getItemsCompra() {
+        return itemsBuy;
     }
 
-    public void setItemsCompra(List<ItemsCompra> itemsCompra) {
-        this.itemsCompra = itemsCompra;
+    public void setItemsCompra(List<ItemsBuy> itemsBuy) {
+        this.itemsBuy = itemsBuy;
     }
 
     @Override
@@ -67,12 +67,12 @@ public class Buy {
                 '}';
     }
 
-    public void addItem(ItemsCompra itemsCompra){
-        this.itemsCompra.add(itemsCompra);
+    public void addItem(ItemsBuy itemsBuy){
+        this.itemsBuy.add(itemsBuy);
     }
 
-    public void removeItem(ItemsCompra itemsCompra){
-        this.itemsCompra.remove(itemsCompra);
+    public void removeItem(ItemsBuy itemsBuy){
+        this.itemsBuy.remove(itemsBuy);
     }
 
 
