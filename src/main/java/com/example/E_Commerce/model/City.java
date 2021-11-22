@@ -12,13 +12,13 @@ public class City {
     private Long id;
     private String cityName;
 
+
     public City() {
     }
 
-
-    public City(Long id, String nome) {
+    public City(Long id, String name) {
         this.id = id;
-        this.cityName = nome;
+        this.cityName = name;
     }
 
     public Long getId() {
@@ -29,11 +29,11 @@ public class City {
         this.id = id;
     }
 
-    public String getNome() {
+    public String getName() {
         return cityName;
     }
 
-    public void setNome(String nome) {
-        this.cityName = nome;
+    public void setName(String name) {
+        this.cityName = name;
     }
 }

@@ -20,9 +20,9 @@ public class Client {
 
     public Client(){}
 
-    public Client(String cpf, String nome, String telephone, String email, Address address) {
+    public Client(String cpf, String name, String telephone, String email, Address address) {
         this.cpf = cpf;
-        this.name = nome;
+        this.name = name;
         this.telephone = telephone;
         this.email = email;
         this.address = address;
@@ -41,8 +41,8 @@ public class Client {
         return name;
     }
 
-    public void setNome(String nome) {
-        this.name = nome;
+    public void setNome(String name) {
+        this.name = name;
     }
 
     public String getTelephone() {
