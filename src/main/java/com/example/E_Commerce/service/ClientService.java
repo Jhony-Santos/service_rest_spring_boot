@@ -25,37 +25,37 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    public List<Client> getClientes(){
+    public List<Client> getClient(){
         return clientRepository.findAll();
     }
 
 
     public Client update(Long id, Client client){
-        Optional<Client> verificarCliente= clientRepository.findById(id);
+        Optional<Client> verifyClient= clientRepository.findById(id);
 
-        if(verificarCliente.isEmpty()){
+        if(verifyClient.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Client clientSalvo =verificarCliente.get();
-        BeanUtils.copyProperties(client, clientSalvo, "id");
+        Client clientSalved = verifyClient.get();
+        BeanUtils.copyProperties(client, clientSalved, "id");
 
-        return clientRepository.save(clientSalvo);
+        return clientRepository.save(clientSalved);
     }
 
-    public ResponseEntity<Client> findClienteById(@PathVariable Long id){
-        Optional<Client> cliente = clientRepository.findById(id);
+    public ResponseEntity<Client> findClientById(@PathVariable Long id){
+        Optional<Client> client = clientRepository.findById(id);
 
-        return cliente.isPresent() ? ResponseEntity.ok(cliente.get()): ResponseEntity.notFound().build();
+        return client.isPresent() ? ResponseEntity.ok(client.get()): ResponseEntity.notFound().build();
 
     }
 
 
     public Client adicionandoCliente(Client client) {
 
-        Optional<Client> clienteById= clientRepository.findClienteById((client.getId()));
+        Optional<Client> clientById= clientRepository.findClientById((client.getId()));
 
-        if(clienteById.isPresent()){
+        if(clientById.isPresent()){
             throw new IllegalStateException("Cliente já cadastrado");
         }
 

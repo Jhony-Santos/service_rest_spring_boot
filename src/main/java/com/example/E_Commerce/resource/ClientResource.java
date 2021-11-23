@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 //@PreAuthorize("hasRole('ROLE_LOJA')")
-@RequestMapping("/cliente")
+@RequestMapping("/client")
 public class ClientResource {
 
     @Autowired
@@ -29,21 +29,21 @@ public class ClientResource {
     private ClientService clientService;
 
     @GetMapping
-    public List<Client> getClientes() {
-        return clientService.getClientes();
+    public List<Client> getClient() {
+        return clientService.getClient();
     }
 
 
     @PostMapping("/create")
-    public void registrandoCliente(@RequestBody Client client){
+    public void registerClient(@RequestBody Client client){
         clientService.adicionandoCliente(client);
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Client> findClienteById(@PathVariable Long id) {
-        Optional<Client> cliente = clientRepository.findById(id);
-        return cliente.isPresent() ? ResponseEntity.ok(cliente.get()) : ResponseEntity.notFound().build();
+    public ResponseEntity<Client> findClientById(@PathVariable Long id) {
+        Optional<Client> client = clientRepository.findById(id);
+        return client.isPresent() ? ResponseEntity.ok(client.get()) : ResponseEntity.notFound().build();
     }
 
     @PutMapping("/update/{id}")
