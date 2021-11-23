@@ -20,16 +20,16 @@ public class BuyService {
 
     public Buy update(Long id, Buy buy){
 
-        Optional<Buy> verificarCompra=buyRepository.findById(id);
+        Optional<Buy> verifyBuy=buyRepository.findById(id);
 
-        if(verificarCompra.isEmpty()){
+        if(verifyBuy.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Buy compraSalva=verificarCompra.get();
-        BeanUtils.copyProperties(buy, compraSalva, "id");
+        Buy buySalved=verifyBuy.get();
+        BeanUtils.copyProperties(buy, buySalved, "id");
 
-        return buyRepository.save(compraSalva);
+        return buyRepository.save(buySalved);
     }
 
     public ResponseEntity<Buy> findBuyById(@PathVariable Long id){
