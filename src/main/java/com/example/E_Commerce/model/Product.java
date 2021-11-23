@@ -12,30 +12,6 @@ import java.util.Objects;
 @Table(name="product")
 public class Product {
 
-    public Product(Long id, String site_id, String title, String subtitle, Long id_integracao, Long seller_id, double price, double base_price, double original_price, String currency_id, int initial_quantity, int avaliable_quantity, String start_time, String stop_time, String condition, String permalink, Address address) {
-        this.id = id;
-        this.site_id = site_id;
-        this.title = title;
-        this.subtitle = subtitle;
-        this.id_integracao = id_integracao;
-        this.seller_id = seller_id;
-        this.price = price;
-        this.base_price = base_price;
-        this.original_price = original_price;
-        this.currency_id = currency_id;
-        this.initial_quantity = initial_quantity;
-        this.avaliable_quantity = avaliable_quantity;
-        this.start_time = start_time;
-        this.stop_time = stop_time;
-        this.condition = condition;
-        this.permalink = permalink;
-        this.address = address;
-    }
-
-    public Product() {
-
-    }
-
     @Id
     @GeneratedValue
     private Long id;
@@ -71,13 +47,38 @@ public class Product {
 
     private String permalink;
 
-    /*@Embedded
-    private Brand brand;*/
+    @Embedded
+    private Brand brand;
 
 
     @Embedded
     private Address address;
 
+
+    public Product(Long id, String site_id, String title, String subtitle, Long id_integracao, Long seller_id, double price, double base_price, double original_price, String currency_id, int initial_quantity, int avaliable_quantity, String start_time, String stop_time, String condition, String permalink, Brand brand, Address address) {
+        this.id = id;
+        this.site_id = site_id;
+        this.title = title;
+        this.subtitle = subtitle;
+        this.id_integracao = id_integracao;
+        this.seller_id = seller_id;
+        this.price = price;
+        this.base_price = base_price;
+        this.original_price = original_price;
+        this.currency_id = currency_id;
+        this.initial_quantity = initial_quantity;
+        this.avaliable_quantity = avaliable_quantity;
+        this.start_time = start_time;
+        this.stop_time = stop_time;
+        this.condition = condition;
+        this.permalink = permalink;
+        this.brand = brand;
+        this.address = address;
+    }
+
+    public Product() {
+
+    }
 
     public Long getId() {
         return id;
@@ -217,13 +218,13 @@ public class Product {
         this.address = address;
     }
 
-    /*public Brand getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
     public void setBrand(Brand brand) {
         this.brand = brand;
-    }*/
+    }
 
     @Override
     public boolean equals(Object o) {

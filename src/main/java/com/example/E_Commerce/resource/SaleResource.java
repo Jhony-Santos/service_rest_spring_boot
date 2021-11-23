@@ -64,11 +64,11 @@ public class SaleResource {
     @PostMapping("/create")
     public ResponseEntity create(@RequestBody SaleDTO venda, HttpServletResponse response) {
 
-            Sale saleSalva = new Sale();
+            Sale saleSalved = new Sale();
 
         Client client = clientRepository.findById(venda.getId_client()).get(); // verificando a existência do cliente
-        saleSalva.setCliente(client);
-        saleSalva.setStatus(false);
+        saleSalved.setCliente(client);
+        saleSalved.setStatus(false);
 
 
         // preciso de dois laços para melhor verificação
@@ -76,10 +76,10 @@ public class SaleResource {
         for(ItemSaleDTO i: venda.getItems()){
 
             Product product = productRepository.findById(i.getId_produto()).get(); // verificando a existência do produto
-            Stock stock = stockRepository.findByProduct(product);// verifico se o produto possui estoque
+            Stock stock = stockRepository.findProductById(product);// verifico se o produto possui estoque
 
-            int quantidade_produto_estoque= stockRepository.findByProduct(stock.getProduct()).getQuantity();
-            double valor_venda_produto= stockRepository.findByProduct(stock.getProduct()).getValor();
+            int quantidade_produto_estoque= stockRepository.findProductById(stock.getProduct()).getQuantity();
+            double valor_venda_produto= stockRepository.findProductById(stock.getProduct()).getValor();
 
             if(product !=null && quantidade_produto_estoque > 0 && valor_venda_produto > 0){ // caminho feliz
 
@@ -91,15 +91,15 @@ public class SaleResource {
                     itemsSell.setProduto(product);
                     itemsSell.setQuantidade(cont.getQuantity());
                     itemsSell.setValor(cont.getPrice());
-                    itemsSell.setVenda(saleSalva);
-                    saleSalva.addItem(itemsSell);
+                    itemsSell.setVenda(saleSalved);
+                    saleSalved.addItem(itemsSell);
 
                     stock.getProduct();
                     stock.setQuantity(stock.getQuantity() - i.getQuantity());
                     stock.getValor();
 
                 stockRepository.save(stock);
-                saleSalva = saleRepository.save(saleSalva);
+                saleSalved = saleRepository.save(saleSalved);
             }
 
             }
@@ -110,8 +110,8 @@ public class SaleResource {
         }
 
 
-        publisher.publishEvent(new EventoGenerico(this,response, saleSalva.getId()));
-        return ResponseEntity.status(HttpStatus.CREATED).body(saleSalva);
+        publisher.publishEvent(new EventoGenerico(this,response, saleSalved.getId()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(saleSalved);
 
     }
 

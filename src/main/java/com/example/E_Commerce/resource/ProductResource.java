@@ -41,54 +41,54 @@ public class ProductResource {
         return productRepository.findAll();
     }
 
-    @GetMapping("/listarProdutos")
+    @GetMapping("/listProducts")
     public List<Product> list(){
 
-        List<Product> listaProducts =new ArrayList<>();
+        List<Product> listProducts = new ArrayList<>();
 
         for(Stock i: stockRepository.findAll()){
 
             if(i.getQuantity() > 0 && i.getValor() > 0 ){ // caminho feliz
-                    listaProducts.add(i.getProduct());
+                listProducts.add(i.getProduct());
 
             }
         }
-        return listaProducts;
+        return listProducts;
     }
 
 
     @PostMapping("/create")// CREATE
     public ResponseEntity create(@RequestBody Product product, HttpServletResponse response) {
 
-        Product productSalvo = productRepository.save(product);
+        Product productSalved = productRepository.save(product);
 
         Stock stock = new Stock();
         stock.setValor(0.00);
         stock.setQuantity(0);
-        stock.setProduct(productSalvo);
+        stock.setProduct(productSalved);
         stockRepository.save(stock);
 
-        publisher.publishEvent(new EventoGenerico(this,response, productSalvo.getId()));
-        return ResponseEntity.status(HttpStatus.CREATED).body(productSalvo);
+        publisher.publishEvent(new EventoGenerico(this,response, productSalved.getId()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(productSalved);
     }
 
-    @GetMapping("/{codigo}")
-    public ResponseEntity<Product> findProdutoById(@PathVariable Long codigo){
-        Optional<Product> produto= productRepository.findById(codigo);
-        return produto.isPresent() ? ResponseEntity.ok(produto.get()): ResponseEntity.notFound().build();
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> findProductById(@PathVariable Long id){
+        Optional<Product> product= productRepository.findById(id);
+        return product.isPresent() ? ResponseEntity.ok(product.get()): ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/update/{codigo}")
-    public ResponseEntity<Product> update(@PathVariable Long codigo, @RequestBody Product product){
-        Product productSave = productService.update(codigo, product);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product product){
+        Product productSave = productService.update(id, product);
         return ResponseEntity.ok(productSave);
     }
 
 
-    @DeleteMapping("/delete/{codigo}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remove(@PathVariable Long codigo ){
-        productRepository.deleteById(codigo);
+    public void remove(@PathVariable Long id ){
+        productRepository.deleteById(id);
     }
 
 

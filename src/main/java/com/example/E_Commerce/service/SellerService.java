@@ -24,38 +24,38 @@ public class SellerService {
         this.sellerRepository = sellerRepository;
     }
 
-    public List<Seller> getFornecedores(){
+    public List<Seller> getSeller(){
         return sellerRepository.findAll();
 
     }
 
    public Seller update(Long id, Seller seller){
 
-        Optional<Seller> verificarFornecedor= sellerRepository.findSellerById(id);
+        Optional<Seller> verifySeller= sellerRepository.findSellerById(id);
 
 
-        if(verificarFornecedor.isEmpty()){
+        if(verifySeller.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Seller sellerSalvo =verificarFornecedor.get();
-        BeanUtils.copyProperties(seller, sellerSalvo, "id");
+        Seller sellerSalved = verifySeller.get();
+        BeanUtils.copyProperties(seller, sellerSalved, "id");
 
-        return sellerRepository.save(sellerSalvo);
+        return sellerRepository.save(sellerSalved);
     }
 
-    public ResponseEntity<Seller> findFornecedorById(@PathVariable Long id){
-        Optional<Seller> fornecedor = sellerRepository.findById(id);
+    public ResponseEntity<Seller> findSellerById(@PathVariable Long id){
+        Optional<Seller> seller = sellerRepository.findById(id);
 
-        return fornecedor.isPresent() ? ResponseEntity.ok(fornecedor.get()): ResponseEntity.notFound().build();
+        return seller.isPresent() ? ResponseEntity.ok(seller.get()): ResponseEntity.notFound().build();
 
     }
 
-    public Seller adicionandoFornecedor(Seller seller) {
+    public Seller addSeller(Seller seller) {
 
-        Optional<Seller> fornecedorById= sellerRepository.findById(seller.getId());
+        Optional<Seller> sellerById= sellerRepository.findById(seller.getId());
 
-        if(fornecedorById.isPresent()){
+        if(sellerById.isPresent()){
             throw new IllegalStateException("Fornecedor já cadastrado");
         }
 

@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 //@PreAuthorize("hasRole('ROLE_LOJA')")
-@RequestMapping("/estoque")
+@RequestMapping("/stock")
 public class StockResource {
 
     @Autowired
@@ -44,12 +44,12 @@ public class StockResource {
     }
 
     @GetMapping("/{id}") // READ
-    public ResponseEntity<Stock> findEstoqueById(@PathVariable Long id){
-        Optional<Stock> estoque= stockRepository.findById(id);
+    public ResponseEntity<Stock> findStockById(@PathVariable Long id){
+        Optional<Stock> stock= stockRepository.findById(id);
 
-        //System.out.println(estoque);
+        System.out.println(stock);
 
-        return estoque.isPresent() ? ResponseEntity.ok(estoque.get()): ResponseEntity.notFound().build();
+        return stock.isPresent() ? ResponseEntity.ok(stock.get()): ResponseEntity.notFound().build();
     }
 
     @PutMapping("/update/{id}")    // UPDATE
@@ -59,8 +59,8 @@ public class StockResource {
     }
 
     @PutMapping("/update/{valor}")
-    public ResponseEntity<Stock> atualizarValor(@PathVariable Long id, @PathVariable double valor, @RequestBody Stock stock){
-        Stock stockSave = stockService.atualizarValor(id, stock,valor);
+    public ResponseEntity<Stock> updatePrice(@PathVariable Long id, @PathVariable double price, @RequestBody Stock stock){
+        Stock stockSave = stockService.updatePrice(id, stock,price);
         return ResponseEntity.ok(stockSave);
     }
 

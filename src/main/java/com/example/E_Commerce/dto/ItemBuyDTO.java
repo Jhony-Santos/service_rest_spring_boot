@@ -26,7 +26,7 @@ public class ItemBuyDTO {
         return quantity;
     }
 
-    public void setQuantity(Integer quantidade) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 }

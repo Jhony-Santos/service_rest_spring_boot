@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name="venda")
+@Table(name="sale")
 public class Sale {
 
     @Id
@@ -16,7 +16,7 @@ public class Sale {
 
 
     @ManyToOne
-    @JoinColumn(name = "cliente")
+    @JoinColumn(name = "client")
     private Client client;
 
     private boolean status;
@@ -45,7 +45,7 @@ public class Sale {
         this.id = id;
     }
 
-    public Client getCliente() {
+    public Client getClient() {
         return client;
     }
 
@@ -53,11 +53,11 @@ public class Sale {
         this.client = client;
     }
 
-    public List<ItemsSell> getItemsVendas() {
+    public List<ItemsSell> getItemsSells() {
         return itemsSells;
     }
 
-    public void setItemsVendas(List<ItemsSell> itemsSells) {
+    public void setItemsSells(List<ItemsSell> itemsSells) {
         this.itemsSells = itemsSells;
     }
 
@@ -82,7 +82,7 @@ public class Sale {
         return "Buy{" +
                 "id=" + id +
                 ", Client=" + client +
-                ", itemsVendas=" + itemsSells +
+                ", itemsSells=" + itemsSells +
                 '}';
     }
 

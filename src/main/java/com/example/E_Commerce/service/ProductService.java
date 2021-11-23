@@ -18,22 +18,22 @@ public class ProductService {
     private ProductRepository productRepository;
 
 
-    public Product update(Long codigo, Product product){
-        Optional<Product> verificarProduto= productRepository.findById(codigo);
+    public Product update(Long id, Product product){
+        Optional<Product> verifyProduct= productRepository.findById(id);
 
-        if(verificarProduto.isEmpty()){
+        if(verifyProduct.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Product productSalvo =verificarProduto.get();
-        BeanUtils.copyProperties(product, productSalvo, "codigo");
+        Product productSalved =verifyProduct.get();
+        BeanUtils.copyProperties(product, productSalved, "id");
 
-        return productRepository.save(productSalvo);
+        return productRepository.save(productSalved);
     }
 
 
-    public ResponseEntity<Product> findProdutoById(@PathVariable Long codigo){
-        Optional<Product> produto = productRepository.findById(codigo);
+    public ResponseEntity<Product> findProductById(@PathVariable Long id){
+        Optional<Product> produto = productRepository.findById(id);
 
         return produto.isPresent() ? ResponseEntity.ok(produto.get()): ResponseEntity.notFound().build();
 

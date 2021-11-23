@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 //@PreAuthorize("hasRole('ROLE_LOJA')")
-@RequestMapping("/fornecedores")
+@RequestMapping("/seller")
 public class SellerResource {
 
     @Autowired
@@ -33,13 +33,13 @@ public class SellerResource {
     }
 
     @GetMapping()
-    public List<Seller> getFornecedores(){
-        return sellerService.getFornecedores();
+    public List<Seller> getSeller(){
+        return sellerService.getSeller();
     }
 
     @PostMapping("/create")
-    public void registrandoFornecedor(@RequestBody Seller seller){
-         sellerService.adicionandoFornecedor(seller);
+    public void registerSeller(@RequestBody Seller seller){
+         sellerService.addSeller(seller);
     }
 
 

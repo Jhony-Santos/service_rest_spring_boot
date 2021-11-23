@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/items")
-public class ItemsCompraResource {
+public class ItemsBuyResource {
 
     @Autowired
     private ItemsBuyRepository itemsBuyRepository;

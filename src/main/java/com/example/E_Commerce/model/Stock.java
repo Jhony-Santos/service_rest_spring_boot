@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name="estoque")
+@Table(name="stock")
 public class Stock {
 
     @Id
@@ -57,9 +57,9 @@ public class Stock {
     public String toString() {
         return "Estoque{" +
                 "id=" + id +
-                ", produto=" + product +
-                ", quantidade=" + quantity +
-                ", valor=" + price +
+                ", product=" + product +
+                ", quantity=" + quantity +
+                ", price=" + price +
                 '}';
     }
 

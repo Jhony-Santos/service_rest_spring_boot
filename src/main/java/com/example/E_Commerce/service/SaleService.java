@@ -18,23 +18,23 @@ public class SaleService {
     private SaleRepository saleRepository;
 
     public Sale update(Long id , Sale sale){
-        Optional<Sale> verificarVenda= saleRepository.findById(id);
+        Optional<Sale> verifySell= saleRepository.findById(id);
 
-        if(verificarVenda.isEmpty()){
+        if(verifySell.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Sale saleSalva =verificarVenda.get();
-        BeanUtils.copyProperties(sale, saleSalva, "id");
+        Sale saleSalved =verifySell.get();
+        BeanUtils.copyProperties(sale, saleSalved, "id");
 
-        return saleRepository.save(saleSalva);
+        return saleRepository.save(saleSalved);
     }
 
 
     public ResponseEntity<Sale> findSaleById(@PathVariable Long id){
-        Optional<Sale> venda = saleRepository.findById(id);
+        Optional<Sale> sale = saleRepository.findById(id);
 
-        return venda.isPresent() ? ResponseEntity.ok(venda.get()): ResponseEntity.notFound().build();
+        return sale.isPresent() ? ResponseEntity.ok(sale.get()): ResponseEntity.notFound().build();
 
     }
 

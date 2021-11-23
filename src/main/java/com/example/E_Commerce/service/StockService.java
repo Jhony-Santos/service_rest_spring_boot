@@ -25,38 +25,38 @@ public class StockService {
 
     public Stock update(Long id, Stock stock){
 
-        Optional<Stock> verificarEstoque= stockRepository.findById(id);
+        Optional<Stock> verifyStock= stockRepository.findById(id);
 
-        if(verificarEstoque.isEmpty()){
+        if(verifyStock.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Stock stockSalvo =verificarEstoque.get();
+        Stock stockSalvo = verifyStock.get();
         BeanUtils.copyProperties(stock, stockSalvo, "id");
 
         return stockRepository.save(stockSalvo);
     }
 
-    public ResponseEntity<Stock> findEstoqueById(@PathVariable Long id){
-        Optional<Stock> estoque = stockRepository.findById(id);
+    public ResponseEntity<Stock> findStockById(@PathVariable Long id){
+        Optional<Stock> stock = stockRepository.findById(id);
 
-        return estoque.isPresent() ? ResponseEntity.ok(estoque.get()): ResponseEntity.notFound().build();
+        return stock.isPresent() ? ResponseEntity.ok(stock.get()): ResponseEntity.notFound().build();
 
     }
 
 
-    public Stock atualizarValor(Long id, Stock stock, double valor){
-        Optional<Stock> verificarEstoque= stockRepository.findById(id);
+    public Stock updatePrice(Long id, Stock stock, double price){
+        Optional<Stock> findStockById= stockRepository.findById(id);
 
-        if(verificarEstoque.isEmpty()){
+        if(findStockById.isEmpty()){
             throw new EmptyResultDataAccessException(1);
         }
 
-        Stock stockSalvo =verificarEstoque.get();
-        stockSalvo.setValor(valor);
-        BeanUtils.copyProperties(stock, stockSalvo, "id");
+        Stock stockSalved = findStockById.get();
+        stockSalved.setValor(price);
+        BeanUtils.copyProperties(stock, stockSalved, "id");
 
-        return stockRepository.save(stockSalvo);
+        return stockRepository.save(stockSalved);
     }
 
 }

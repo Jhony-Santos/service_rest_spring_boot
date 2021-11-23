@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "fornecedor")
+@Table(name = "seller")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Seller {
 
@@ -58,7 +58,7 @@ public class Seller {
         return telephone;
     }
 
-    public void settelephone(String telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
@@ -70,11 +70,11 @@ public class Seller {
         this.email = email;
     }
 
-    public Address getAdress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAdress(Address address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
@@ -99,7 +99,7 @@ public class Seller {
                 ", name='" + name + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
-                ", adress=" + address +
+                ", address=" + address +
                 '}';
     }
 }

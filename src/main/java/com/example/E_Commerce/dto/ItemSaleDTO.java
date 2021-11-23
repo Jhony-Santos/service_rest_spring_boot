@@ -11,15 +11,15 @@ public class ItemSaleDTO {
         return id_product;
     }
 
-    public void setId_product(Long id_produto) {
-        this.id_product = id_produto;
+    public void setId_product(Long id_product) {
+        this.id_product = id_product;
     }
 
     public Double getPrice() {
         return price;
     }
 
-    public void setValor(Double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
