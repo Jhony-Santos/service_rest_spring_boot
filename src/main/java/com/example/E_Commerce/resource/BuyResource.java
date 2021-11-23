@@ -1,4 +1,4 @@
-/* package com.example.E_Commerce.resource;
+package com.example.E_Commerce.resource;
 
 
 import com.example.E_Commerce.EventoGenerico;
@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 /*import org.springframework.security.access.prepost.PreAuthorize;*/
-/*
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 //@PreAuthorize("hasRole('ROLE_LOJA')")
-@RequestMapping("/compra")
+@RequestMapping("/buy")
 public class BuyResource {
 
     @Autowired
@@ -44,7 +44,7 @@ public class BuyResource {
 
 
     @GetMapping
-    public ResponseEntity<List<Buy>> findAllCompra(){
+    public ResponseEntity<List<Buy>> findAllBuy(){
         List <Buy> buy = buyRepository.findAll();
         if(buy.isEmpty()){
             String erro="Nenhuma compra foi realizada ainda";
@@ -78,7 +78,7 @@ public class BuyResource {
 
 
 
-            Stock stock = stockRepository.findByProduto(product);
+            Stock stock = stockRepository.findProductById(product);
 
             if(stock==null || product ==null  ){
 
@@ -103,4 +103,3 @@ public class BuyResource {
 }
 
 
- */
