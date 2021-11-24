@@ -28,11 +28,11 @@ public class AttributeService {
     }
 
     public Set<Attribute> save(Set<Attribute> attributes) {
-        Set<Attribute> retorno = new HashSet();
+        Set<Attribute> att = new HashSet();
         for (Attribute attribute : attributes) {
-            retorno.add(repository.save(attribute));
+            att.add(repository.save(attribute));
         }
-        return  retorno;
+        return  att;
     }
 
 
