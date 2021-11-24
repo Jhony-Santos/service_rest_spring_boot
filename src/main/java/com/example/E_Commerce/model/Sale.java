@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Sale {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
 

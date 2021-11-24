@@ -3,13 +3,11 @@ package com.example.E_Commerce.model;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="state")
 @Embeddable
 public class State {
 
     @Id
-    private Long id;
+    private long id;
 
     private String stateName;
 
@@ -18,6 +16,7 @@ public class State {
     }
 
     public State(Long id, String name) {
+
         this.id = id;
         this.stateName = name;
     }

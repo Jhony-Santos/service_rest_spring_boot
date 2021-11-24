@@ -51,7 +51,7 @@ public class ClientService {
     }
 
 
-    public Client adicionandoCliente(Client client) {
+    public Client addClient(Client client) {
 
         Optional<Client> clientById= clientRepository.findClientById((client.getId()));
 

@@ -1,20 +1,23 @@
 package com.example.E_Commerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "client")
-public class Client {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Client implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
     private String cpf;
     private String name;
     private String telephone;
     private String email;
-
     @Embedded
     private Address address;
 
@@ -33,6 +36,14 @@ public class Client {
         return cpf;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
@@ -41,7 +52,7 @@ public class Client {
         return name;
     }
 
-    public void setNome(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -68,12 +79,7 @@ public class Client {
     public void setAddress(Address address) {
         this.address = address;
     }
-    public void setId(){
-        this.id=id;
-    }
-    public Long getId(){
-        return id;
-    }
+
 
 
     @Override

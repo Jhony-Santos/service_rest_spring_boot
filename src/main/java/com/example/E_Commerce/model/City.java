@@ -1,20 +1,21 @@
 package com.example.E_Commerce.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
-@Entity
-@Table(name="city")
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Embeddable
 public class City {
 
     @Id
-    private Long id;
+    private long id;
     private String cityName;
 
 
-    public City() {
-    }
+    public City() {}
 
     public City(Long id, String name) {
         this.id = id;

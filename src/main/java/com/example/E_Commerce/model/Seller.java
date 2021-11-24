@@ -5,12 +5,12 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "seller")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Table(name = "seller")
 public class Seller {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
     private String cnpj;
@@ -21,9 +21,7 @@ public class Seller {
     @Embedded
     private Address address;
 
-    public Long getId() {
-        return id;
-    }
+
     public Seller(){}
 
     public Seller(String cnpj, String name, String telephone, String email, Address address) {
@@ -32,6 +30,10 @@ public class Seller {
         this.telephone = telephone;
         this.email = email;
         this.address = address;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {

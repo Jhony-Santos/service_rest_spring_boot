@@ -36,7 +36,7 @@ public class ClientResource {
 
     @PostMapping("/create")
     public void registerClient(@RequestBody Client client){
-        clientService.adicionandoCliente(client);
+        clientService.addClient(client);
     }
 
 

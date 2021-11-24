@@ -1,15 +1,19 @@
 package com.example.E_Commerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="product")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 
     @Id
@@ -47,15 +51,15 @@ public class Product {
 
     private String permalink;
 
-    @Embedded
-    private Brand brand;
-
 
     @Embedded
     private Address address;
 
+    @ManyToMany
+    private Set<Attribute> attributes;
 
-    public Product(Long id, String site_id, String title, String subtitle, Long id_integracao, Long seller_id, double price, double base_price, double original_price, String currency_id, int initial_quantity, int avaliable_quantity, String start_time, String stop_time, String condition, String permalink, Brand brand, Address address) {
+
+    public Product(Long id, String site_id, String title, String subtitle, Long id_integracao, Long seller_id, double price, double base_price, double original_price, String currency_id, int initial_quantity, int avaliable_quantity, String start_time, String stop_time, String condition, String permalink, Brand brand, Address address, Set<Attribute> attributes) {
         this.id = id;
         this.site_id = site_id;
         this.title = title;
@@ -72,13 +76,11 @@ public class Product {
         this.stop_time = stop_time;
         this.condition = condition;
         this.permalink = permalink;
-        this.brand = brand;
         this.address = address;
+        this.attributes = attributes;
     }
 
-    public Product() {
-
-    }
+    public Product() { }
 
     public Long getId() {
         return id;
@@ -218,12 +220,12 @@ public class Product {
         this.address = address;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public Set<Attribute> getAttributes() {
+        return attributes;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setAttributes(Set<Attribute> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

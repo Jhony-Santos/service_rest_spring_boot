@@ -1,11 +1,14 @@
 package com.example.E_Commerce.resource;
 
 import com.example.E_Commerce.EventoGenerico;
+import com.example.E_Commerce.model.Attribute;
 import com.example.E_Commerce.model.Product;
 import com.example.E_Commerce.model.Stock;
 import com.example.E_Commerce.repository.StockRepository;
 import com.example.E_Commerce.repository.ProductRepository;
+import com.example.E_Commerce.service.AttributeService;
 import com.example.E_Commerce.service.ProductService;
+import com.example.E_Commerce.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -17,10 +20,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 //@PreAuthorize("hasRole('ROLE_LOJA')")
-@RequestMapping("/produto")
+@RequestMapping("/product")
 public class ProductResource {
 
     @Autowired
@@ -34,6 +38,8 @@ public class ProductResource {
 
     @Autowired
     private StockRepository stockRepository;
+
+
 
 
     @GetMapping
@@ -57,8 +63,13 @@ public class ProductResource {
     }
 
 
+
+
+
     @PostMapping("/create")// CREATE
     public ResponseEntity create(@RequestBody Product product, HttpServletResponse response) {
+
+
 
         Product productSalved = productRepository.save(product);
 
