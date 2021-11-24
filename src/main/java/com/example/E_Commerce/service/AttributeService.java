@@ -34,10 +34,4 @@ public class AttributeService {
         }
         return  att;
     }
-
-
-
-
-
-
 }
