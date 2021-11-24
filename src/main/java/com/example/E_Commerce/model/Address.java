@@ -1,13 +1,12 @@
 package com.example.E_Commerce.model;
 
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.*;
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Embeddable
 public class Address {
-
-    @Id
-    public Long addressId;
 
     @Embedded
     private State state;
@@ -18,24 +17,12 @@ public class Address {
     @Embedded
     private Country country;
 
+    public Address() {   }
 
-    public Address() {
-
-    }
-
-    public Address(Long id, State state, City city, Country country) {
-        this.addressId = id;
+    public Address(State state, City city, Country country) {
         this.state = state;
         this.city = city;
         this.country = country;
-    }
-
-    public Long getId() {
-        return addressId;
-    }
-
-    public void setId(Long id) {
-        this.addressId = id;
     }
 
     public State getState() {
